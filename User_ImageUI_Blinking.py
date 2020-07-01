@@ -10,7 +10,7 @@ class Example(QWidget):
     def __init__(self,path):
         super().__init__()
 
-        self.q = QueueHandling()
+        self.queue_handler = QueueHandling()
     
         self.im = QPixmap(path)
        
@@ -26,12 +26,12 @@ class Example(QWidget):
         
         self.setWindowTitle("PyQT show image")
         
-        self.blinkcounts = 0
+        self.blink_count = 0
 
 
         self.stopByBlinks()
         
-        self.q.add_data('Stop')
+        self.queue_handler.add_data('Stop')
         
 
     
@@ -42,9 +42,11 @@ class Example(QWidget):
         Once the count reaches two, the function returns the control.]
         """
         QApplication.processEvents()
-        while self.blinkcounts<2:
-            if self.q.get_data():
-                self.blinkcounts+=1
+
+        while self.blink_count<2:
+            
+            self.blink_count = self.queue_handler.get_data() 
+            
         return 
 
         

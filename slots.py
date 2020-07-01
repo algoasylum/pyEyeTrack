@@ -59,12 +59,7 @@ class MyImageViewerWidget(QFrame):
             
             
             if self.queue_handler.is_empty() == False:
-                q_element = self.queue_handler.get_data() 
-
-                if q_element ==True:
-                    blink_count +=1
-                    
-            
+                blink_count = self.queue_handler.get_data() 
         
             if blink_count < 1:
 
@@ -95,7 +90,6 @@ class MyImageViewerWidget(QFrame):
                 self.ui.mLabel3.setPixmap(cropped)
                 
             elif blink_count >=3:
-                sys.exit()
                 break
         
             QApplication.processEvents()
@@ -108,11 +102,13 @@ class MyImageViewerWidget(QFrame):
             print("===============")
 
         else:
-            print("game over, " + str(self.games_played) + " games played")
+            print("Game Over!")
+            self.queue_handler.add_data('Stop')
             
         
         if self.games_played >1:
             return
+
             
 
 

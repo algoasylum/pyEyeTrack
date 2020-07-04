@@ -59,7 +59,9 @@ class MyImageViewerWidget(QFrame):
             
             
             if self.queue_handler.is_empty() == False:
-                blink_count = self.queue_handler.get_data() 
+                queue_element = self.queue_handler.get_data() 
+                if queue_element == True:
+                    blink_count += 1 
         
             if blink_count < 1:
 

@@ -37,7 +37,7 @@ class Example(QWidget):
     
     def stopByBlinks(self):
         """[This function monitors the blink count. It primarily detects if the user has blinked twice. 
-        The function acceses the queue that has the timestamp of the blink. 
+        The function acceses the queue to detect a blink. 
         It increments the blinkcounter every time the queue has a new entry. 
         Once the count reaches two, the function returns the control.]
         """
@@ -45,8 +45,10 @@ class Example(QWidget):
 
         while self.blink_count<2:
             
-            self.blink_count = self.queue_handler.get_data() 
-            
+            queue_element= self.queue_handler.get_data() 
+            if queue_element == True:
+                self.blink_count +=1
+                
         return 
 
         

@@ -28,7 +28,7 @@ class Blinking (EyeTracking) :
         self.blink_ratios = []                          #stores the blink ratio everytime the subject blinks
         self.queue_handler = QueueHandling()            #intialized queue to do real-time data transfer
         self.BLINK_RATIO_THRESHOLD = 5.7                #value of the blink ratio threshold
-        self.blink_count = 0
+        
         
     def midpoint(self,point_1 ,point_2):
         """
@@ -75,7 +75,7 @@ class Blinking (EyeTracking) :
         This method overrides the method in the superclass. This method gets the blink ratios for both the eyes 
         and calculates the average blink ratio. If the value of the average blink ratio is greater than the BLINK_RATIO_THRESHOLD
         we presume that the subject blinked. If the subject blinks we add the timestamp of the blink and the value of the blink ratio 
-        to the respective lists. We also add 'True' to the queue if the subject blinked else we add 'False'. This queue can be acssed 
+        to the respective lists. We also add True to the queue on blink detection. This queue can be acessed 
         by the user to see if the subject blinked in real-time. Finally, we also toggle the close_flag if the string 'Stop' is found 
         in the queue. This can be used by the user to stop the application. 
 
@@ -89,11 +89,10 @@ class Blinking (EyeTracking) :
         
         if blink_ratio > self.BLINK_RATIO_THRESHOLD :
             timestamp = time.time()
-            self.blink_count +=1
-            self.queue_handler.add_data(self.blink_count)
+            self.queue_handler.add_data(True)
             self.timestamps.append(timestamp)
             self.blink_ratios.append(blink_ratio)
-           
+            
         if self.queue_handler.search_queue('Stop'):
             self.close_flag = True
 

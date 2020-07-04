@@ -3,11 +3,11 @@ import numpy as np
 import pandas as pd
 import cv2
 import time
-from datahandling import QueueHandling
+from DataHandling import QueueHandling
 
 class PupilTracking(EyeTracking):
     """
-    A subclass of EyeTracking that does pupil tracking i.e. this class will give the center of the pupils for both the eyes. 
+    A subclass of EyeTracking that does pupil tracking i.e. this class will give the pupil centers for both the eyes. 
 
     Methods:
         detect_eye(eye_points,facial_landmarks)
@@ -82,7 +82,7 @@ class PupilTracking(EyeTracking):
 
     def get_approximate_pupil_rectangle(self,eye_landmarks_coordinates,frame):
         """
-        In this function we first find the minimum and maximum for x coordinate of the location the eye and similary for the y coordinate.
+        In this function we first find the minimum and maximum for x coordinate of the location the eye and similarly for the y coordinate.
         Here we have altered the values such that after cropping the area would give us only the region inside the eye. This is the approximately 
         the region where the pupil lies.
 

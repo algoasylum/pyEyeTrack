@@ -8,11 +8,11 @@ class EyeTracking(ABC):
 
     """
     EyeTracking is an abstract class that is used to implement different types of eye-tracking events.
-    In this librabry we have used this class to implement blink detection, pupil-tracking.
+    In this library we have used this class to implement blink detection and pupil-tracking.
 
     Attributes:
         detector: default face detector in dlib
-        predictor: used to map the facial lanmark on the face detected
+        predictor: used to map the facial landmark on the face detected
 
     Methods:
         csv_writer(file_name)
@@ -36,7 +36,7 @@ class EyeTracking(ABC):
     @abstractmethod
     def csv_writer(self, file_name):
         """
-        Implememnts writer to write the data dictonary to .csv file.
+        Implements writer to write the data dictonary to .csv file.
 
         Args:
             file_name (string): name of the .csv file to be generated.
@@ -46,10 +46,9 @@ class EyeTracking(ABC):
     @abstractmethod
     def functionality(self,frame):
         """
-        Implement the eye-tracking functionality reuquired. 
-
+        Implement the eye-tracking functionality required. 
         Args:
-            frame ([type]): [description]
+            frame (numpy array): it is the frame in the video or captured by the camera
         """
         pass
 
@@ -71,6 +70,10 @@ class EyeTracking(ABC):
             self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
 
             faces,_,_ = self.detector.run(self.frame,0)
+
+            if len(faces)==0:
+                print('Face not detected. Find better lighting.')
+                break
 
             self.landmarks = self.predictor(self.frame, faces[0])
 

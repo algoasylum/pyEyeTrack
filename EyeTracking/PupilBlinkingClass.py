@@ -4,7 +4,7 @@ import pandas as pd
 import cv2
 import time
 from math import hypot
-from datahandling import QueueHandling
+from DataHandling import QueueHandling
 
 
 class PupilBlinking(EyeTracking):
@@ -35,7 +35,7 @@ class PupilBlinking(EyeTracking):
     """
 
     def __init__(self, source):
-        super().__init__(source)                                                    #constuctor of the superclass - EyeTracking
+        super().__init__(source)                                                    #constructor of the superclass - EyeTracking
         self.eye_data_log = {"Timestamps":[],"Left_Eye_X":[]                        
                             ,"Left_Eye_Y":[],"Right_Eye_X":[],"Right_Eye_Y":[]
                             ,"Blink":[]}                                            #dictionary to store the location of the pupil center, blink and the corresponding timestamp                                                     #stores the blink ratio everytime the subject blinks
@@ -58,9 +58,9 @@ class PupilBlinking(EyeTracking):
 
     def get_blink_ratio(self,eye_points, facial_landmarks):
         """
-        This function caluclates the blink ratio for a single eye. blink_ratio is the ratio of the horizontal length
+        This function calculates the blink ratio for a single eye. blink_ratio is the ratio of the horizontal length
         of the eye to the vertical length of the eye. The horizontal and vertical lengths are obtained by calculating
-        the euclidean distance between landmarks of the eye. 
+        the Euclidean distance between landmarks of the eye. 
 
         Args:
             eye_points (list): the list of indicies of the facial landmarks which represent an eye
@@ -104,7 +104,7 @@ class PupilBlinking(EyeTracking):
 
     def get_connected_components(self,thresholded_pupil_region):
         """
-        This function returns the pupil ceter of the eye. The input parameter is the thresholded pupil region.
+        This function returns the pupil center of the eye. The input parameter is the thresholded pupil region.
         The pupil center is the centroid of the connected component with the largest area. Since we already have the approximate 
         pupil area, we assume that the connected component with the largest area to be the the pupil.
 
@@ -132,7 +132,7 @@ class PupilBlinking(EyeTracking):
      
     def get_approximate_pupil_rectangle(self,eye_landmarks_coordinates,frame):
         """
-        In this function we first find the minimum and maximum for x coordinate of the location the eye and similary for the y coordinate.
+        In this function we first find the minimum and maximum for x coordinate of the location the eye and similarly for the y coordinate.
         Here we have altered the values such that after cropping the area would give us only the region inside the eye. This is the approximately 
         the region where the pupil lies.
 
@@ -185,7 +185,7 @@ class PupilBlinking(EyeTracking):
         queue to facilitate real-time data transfer. The values of the pupil centers are set to 0 when the subject is blinking.
 
         If the blink ratio is less than the BLINK_RATIO_THRESHOLD we calcute the location of the pupil center for both the eyes. Once the 
-        pupil centers are acquired we append them in eye_data_log dictonary along with the timestamp.Here, we set the value of the 
+        pupil centers are acquired we append them in eye_data_log dictonary along with the timestamp. Here, we set the value of the 
         'Blink' field in the dictonary to 'False'. We also add this data to the queue for real-time data transfer. 
 
         Finally, we also toggle the close_flag if the string 'Stop' is found in the queue. This can be used by the user to 

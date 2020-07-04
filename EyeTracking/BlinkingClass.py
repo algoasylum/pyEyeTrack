@@ -2,7 +2,7 @@ from EyeTracking.AbstractEyeTrackingClass import EyeTracking
 import pandas as pd
 import time
 from math import hypot
-from datahandling import QueueHandling
+from DataHandling import QueueHandling
 
 
 class Blinking (EyeTracking) :
@@ -46,9 +46,9 @@ class Blinking (EyeTracking) :
 
     def get_blink_ratio(self,eye_points, facial_landmarks):
         """
-        This function caluclates the blink ratio for a single eye. blink_ratio is the ratio of the horizontal length
+        This function calculates the blink ratio for a single eye. blink_ratio is the ratio of the horizontal length
         of the eye to the vertical length of the eye. The horizontal and vertical lengths are obtained by calculating
-        the euclidean distance between landmarks of the eye. 
+        the Euclidean distance between landmarks of the eye. 
 
         Args:
             eye_points (list): the list of indicies of the facial landmarks which represent an eye
@@ -105,7 +105,7 @@ class Blinking (EyeTracking) :
             file_name (string): name of the .csv file to be generated.
         """
         file_name = file_name +".csv"
-        df = pd.DataFrame({"TS":self.timestamps,"BR":self.blink_ratios})
+        df = pd.DataFrame({"Timestamps":self.timestamps,"Blink Ratio":self.blink_ratios})
         df.to_csv(file_name)
 
     

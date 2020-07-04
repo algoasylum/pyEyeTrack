@@ -8,6 +8,16 @@ import os
 import sys
 
 class VideoRecorder():
+    """
+    VideoRecorder class is used to record video.
+
+    Methods:
+        record()
+            The function records video while ret is True.
+        stop()
+            The function stops recording video. All the openCV objects are released.
+
+    """
 
     def __init__(self,file_name = 'video'):
         self.open  = True
@@ -22,7 +32,8 @@ class VideoRecorder():
 
 
     def record(self):
-        """[The function records video while ret is true. Frame is written in the video every 160 ms.]
+        """
+        The function records video while ret is True. Frame is written in the video every 160 ms.
         """
 
         while(self.open==True):
@@ -34,7 +45,8 @@ class VideoRecorder():
                 break
 
     def stop(self):
-        """[The function stops video recording and the thread. All the openCV objects are released.]
+        """
+        The function stops recording video. All the openCV objects are released.
         """
         if self.open==True:
             print("video stop")
@@ -47,7 +59,8 @@ class VideoRecorder():
             pass
 
     def main(self):
-        """[The function launches video recording function as a thread.]
+        """
+        The function launches video recording function as a thread.
         """
         video_thread = threading.Thread(target=self.record)
         video_thread.start()

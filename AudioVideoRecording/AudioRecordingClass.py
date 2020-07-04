@@ -10,6 +10,17 @@ import sys,re
 
 
 class AudioRecorder():
+    """
+    AudioRecorder class is used to record audio.
+
+    Methods:
+        record()
+            This function records audio until the open flag is set to False.
+        stop()
+            This function stops recording the audio. 
+            The audio frames are written into .wav file.
+
+    """
 
     def __init__(self,file_name = 'audio'):
         self.open = True
@@ -19,12 +30,14 @@ class AudioRecorder():
         self.format = pyaudio.paInt16
         self.file_name = file_name+".wav"
         self.audio = pyaudio.PyAudio()
+
         self.stream = self.audio.open(format=self.format,channels=self.channels,rate=self.rate,input=True,frames_per_buffer=self.frames_per_buffer)
         self.audioframes = []
 
     def record(self):
-        """[The function records audio until the open flag is set to false. 
-        The frames read by the stream are appended into audio frames.]
+        """
+        The function records audio until the open flag is set to False. 
+        The frames read by the stream are appended into audio frames.
         """
         self.stream.start_stream()
         while(self.open ==True):
@@ -35,8 +48,9 @@ class AudioRecorder():
         
 
     def stop(self):
-        """[The function stops recording audio, thereby also stopping the thread. 
-        Audio frames are written into a .wav file. The stream is stopped and closed. ]
+        """
+        The function stops recording audio, thereby also stopping the thread. 
+        Audio frames are written into a .wav file. The stream is stopped and closed. 
         """
         if self.open==True:
             print("Audio Stop")
@@ -56,7 +70,8 @@ class AudioRecorder():
             pass
     
     def main(self):
-        """[The function launches audio recording function as a thread.]
+        """
+        The function launches audio recording function as a thread.
         """
         audio_thread = threading.Thread(target=self.record,)
         audio_thread.start()

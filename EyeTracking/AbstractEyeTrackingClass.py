@@ -60,7 +60,11 @@ class EyeTracking(ABC):
         if the close_flag is set to 'True' . 
 
         """
-        while True:            
+        while True:     
+
+            if keyboard.is_pressed('esc') or self.close_flag ==True:
+                break
+
             ret, self.frame = self.cap.read()
 
             if not ret:
@@ -69,18 +73,16 @@ class EyeTracking(ABC):
 
             self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
 
-            faces,_,_ = self.detector.run(self.frame,0)
+            faces,_,_ = self.detector.run(self.frame,0,0)
 
             if len(faces)==0:
                 print('Face not detected. Find better lighting.')
-                break
+                continue
 
             self.landmarks = self.predictor(self.frame, faces[0])
 
             self.functionality(self.frame)   
 
-            if keyboard.is_pressed('esc') or self.close_flag ==True:
-                break
 
         self.cap.release()
 

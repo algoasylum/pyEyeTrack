@@ -19,9 +19,9 @@ class PyTrackRunner():
     def dynamic_import(self,module):
         return importlib.import_module(module)
 
-    def pytrack_runner(self, UI_file_name = "User_ImageUI_EscExit", eyeTrackingFileName='EyeTrackLog', video_source = 0, UI = False, 
-    pupilTracking = False, blinkDetection = False, eyeTrackingLog=True,
-    videoRecorder = False, audioRecorder = False,videoName = 'video', audioName = 'audio', syncAudioVideo = False, destinationPath = '/Output'):
+    def pytrack_runner(self, UI_file_name = "User_ImageUI_EscExit", eyeTrackingFileName='EyeTrackLog', video_source = 0 ,flagUI = False, 
+    flagPupilTracking = False, flagBlinkDetection = False,eyeTrackingLog=True, flagPupilTrackingBlinkDetection = False, 
+    flagVideoRecorder = False, flagAudioRecorder = False,videoName = 'video',audioName = 'audio', flagSyncAudioVideo = False, destinationPath = '/Output'):
         """
         This function enables the user to run the functionalities of the library simultaneously. 
         Functionalities include running the UI specified by the user, pupil tracking, blink detection, video recording and audio recording.
@@ -31,15 +31,16 @@ class PyTrackRunner():
             UI_file_name (str, optional): [This parameter takes the file name of the UI]. Defaults to "User_ImageUI_EscExit".
             eyeTrackingFileName (str, optional): [This parameter takes the file name for the CSV]. Defaults to 'EyeTrackLog'.
             video_source (int/str, optional): [This parameter takes either device index or a video file as input]. Defaults to 0.
-            UI (bool, optional): [This parameter enables the user to run UI]. Defaults to False.
-            pupilTracking (bool, optional): [This parameter enables the user to run pupil tracking]. Defaults to False.
-            blinkDetection (bool, optional): [This parameter enables the user to run blink detection]. Defaults to False.
+            flagUI (bool, optional): [This parameter enables the user to run UI]. Defaults to False.
+            flagPupilTracking (bool, optional): [This parameter enables the user to run pupil tracking]. Defaults to False.
+            flagBlinkDetection (bool, optional): [This parameter enables the user to run blink detection]. Defaults to False.
             eyeTrackingLog (bool, optional): [This parameter enables the user to generate a CSV of pupil tracking/ blink detection]. Defaults to True.
-            videoRecorder (bool, optional): [This parameter enables the user to record video]. Defaults to False.
-            audioRecorder (bool, optional): [This parameter enables the user to record audio]. Defaults to False.
+            flagPupilTrackingBlinkDetection (bool, optional): [This parameter enables the user to run pupil tracking and blink detection simultaneously]. Defaults to False.
+            flagVideoRecorder (bool, optional): [This parameter enables the user to record video]. Defaults to False.
+            flagAudioRecorder (bool, optional): [This parameter enables the user to record audio]. Defaults to False.
             videoName (str, optional): [This parameter takes the file name for the video]. Defaults to 'video'.
             audioName (str, optional): [This parameter takes the file name for the audio]. Defaults to 'audio'.
-            syncAudioVideo (bool, optional): [This parameter enables the user to sync audio and video together]. Defaults to False.
+            flagSyncAudioVideo (bool, optional): [This parameter enables the user to sync audio and video together]. Defaults to False.
             destinationPath (str, optional): [This parameter enables the user to store their output files at the desired location.] Defaults to Outputs Folder.
         """
         
@@ -56,7 +57,7 @@ class PyTrackRunner():
         
         outputPath = outputPath + '/'
 
-        if pupilTracking or blinkDetection:
+        if flagPupilTrackingBlinkDetection or flagPupilTracking or flagBlinkDetection:
             startEyeTracking = True
 
         if video_source !=0:
@@ -65,36 +66,37 @@ class PyTrackRunner():
                 sys.exit()
 
         
-        if blinkDetection == True and pupilTracking == True:
+        if flagPupilTrackingBlinkDetection == True:
             
             eyeTracking = PupilBlinking(video_source)
             eyeTrackingThread = threading.Thread(target=eyeTracking.start)
         
-        if blinkDetection == True and pupilTracking == False:
+        if flagBlinkDetection == True:
             
             eyeTracking = Blinking(video_source)
             eyeTrackingThread = threading.Thread(target=eyeTracking.start)
         
-        if pupilTracking == True and blinkDetection == False:
+        if flagPupilTracking == True:
             
             eyeTracking = PupilTracking(video_source)
             eyeTrackingThread = threading.Thread(target=eyeTracking.start) 
 
-        if syncAudioVideo == True:
-            audioRecorder = True
-            videoRecorder = True
+        if flagSyncAudioVideo == True:
+
+            flagAudioRecorder = True
+            flagVideoRecorder = True
         
-        if videoRecorder == True:
+        if flagVideoRecorder == True:
             videoOutputPath = outputPath + videoName
             videoRecorder = VideoRecorder(videoOutputPath)
             videoRecorderThread = threading.Thread(target=videoRecorder.main)
 
-        if audioRecorder == True:
+        if flagAudioRecorder == True:
             audioOutputPath = outputPath + audioName
             audioRecorder = AudioRecorder(outputPath + audioName) 
             audioRecorderThread = threading.Thread(target=audioRecorder.main)
         
-        if UI == True:
+        if flagUI == True:
             module = self.dynamic_import(UI_file_name)
             if hasattr(module, 'main'):
                 uiThread = threading.Thread(target=module.main)
@@ -102,19 +104,19 @@ class PyTrackRunner():
                 print('UI needs a main method. Please Refer documentation for more information.')
                 sys.exit()
         
-        if UI:
+        if flagUI:
             uiThread.start()
         
         if startEyeTracking == True:
             eyeTrackingThread.start()
 
-        if videoRecorder == True:
+        if flagVideoRecorder == True:
             videoRecorderThread.start()
 
-        if audioRecorder == True:
+        if flagAudioRecorder == True:
             audioRecorderThread.start()
         
-        if UI:
+        if flagUI:
             uiThread.join()
 
         if startEyeTracking == True:
@@ -123,15 +125,15 @@ class PyTrackRunner():
                 eyeTrackingOutput = outputPath + eyeTrackingFileName
                 eyeTracking.csv_writer(eyeTrackingOutput)
         
-        if videoRecorder == True:
+        if flagVideoRecorder == True:
             videoRecorderThread.join()
             videoRecorder.stop()
 
-        if audioRecorder == True:
+        if flagAudioRecorder == True:
             audioRecorderThread.join()
             audioRecorder.stop()
 
-        if syncAudioVideo==True and audioRecorder==True and videoRecorder==True:
+        if flagSyncAudioVideo==True and flagAudioRecorder==True and flagVideoRecorder==True:
 
             file_name = audioName+videoName
             avOutputPath = outputPath + file_name

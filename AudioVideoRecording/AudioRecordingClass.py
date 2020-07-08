@@ -53,18 +53,22 @@ class AudioRecorder():
         Audio frames are written into a .wav file. The stream is stopped and closed. 
         """
         if self.open==True:
-            print("Audio Stop")
-            self.open = False
-            self.stream.stop_stream()
-            self.stream.close()
-            self.audio.terminate()
-            
-            waveFile = wave.open (self.file_name,'wb')
-            waveFile.setnchannels(self.channels)
-            waveFile.setsampwidth(self.audio.get_sample_size(self.format))
-            waveFile.setframerate(self.rate)
-            waveFile.writeframes(b''.join(self.audioframes))
-            waveFile.close()
+            try:
+                print("Audio Stop")
+                self.open = False
+                self.stream.stop_stream()
+                self.stream.close()
+                self.audio.terminate()
+
+                waveFile = wave.open (self.file_name,'wb')
+                waveFile.setnchannels(self.channels)
+                waveFile.setsampwidth(self.audio.get_sample_size(self.format))
+                waveFile.setframerate(self.rate)
+                waveFile.writeframes(b''.join(self.audioframes))
+                waveFile.close()
+            except OSError as e:
+                if e.errno == errno.ENOSPC:
+                    print("No space left on device")
         
         else:
             pass

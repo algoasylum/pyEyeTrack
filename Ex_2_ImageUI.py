@@ -53,7 +53,7 @@ class Example(QWidget):
         while self.blink_count<2:
             
             queue_element= self.queue_handler.get_data() 
-            if queue_element == True:
+            if queue_element[5] == True:
                 self.blink_count +=1
                 
         return 

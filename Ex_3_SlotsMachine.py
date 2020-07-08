@@ -56,10 +56,10 @@ class MyImageViewerWidget(QFrame):
         Returns:
             image : selects and returns a cropped image
         """
-        a = random.randint(0, len(self.x) - 1)
-        self.rect = QRect(self.x[a], self.y[a], 300, 300)
+        selected_image_index = random.randint(0, len(self.x) - 1)
+        self.rect = QRect(self.x[selected_image_index], self.y[selected_image_index], 300, 300)
         cropped = self.px.copy(self.rect)
-        return cropped,a
+        return cropped,selected_image_index
 
 
     def spin(self):
@@ -74,43 +74,27 @@ class MyImageViewerWidget(QFrame):
         for _ in range(0, 200):
             time.sleep((50 + 25 * 9) / 1000)
             
-            
             if self.queue_handler.is_empty() == False:
                 queue_element = self.queue_handler.get_data() 
                 if queue_element == True:
                     blink_count += 1 
                     print('blink: ',blink_count)
-        
-            if blink_count < 1:
 
-                
+            if blink_count >= 3:
+                break
+        
+            if blink_count < 3:
+                cropped,c = self.select_random_image()
+                self.ui.mLabel3.setPixmap(cropped)
+            
+            if blink_count < 2:
+                cropped,b = self.select_random_image()
+                self.ui.mLabel2.setPixmap(cropped)
+
+            if blink_count < 1:
                 cropped,a = self.select_random_image()
                 self.ui.mLabel.setPixmap(cropped)
 
-            
-                cropped,b = self.select_random_image()
-                self.ui.mLabel2.setPixmap(cropped)
-
-                
-                cropped,c = self.select_random_image()
-                self.ui.mLabel3.setPixmap(cropped)
-
-            elif blink_count < 2:
-                
-                
-                cropped,b = self.select_random_image()
-                self.ui.mLabel2.setPixmap(cropped)
-
-                cropped,c = self.select_random_image()
-                self.ui.mLabel3.setPixmap(cropped)
-
-            elif blink_count < 3:
-
-                cropped,c = self.select_random_image()
-                self.ui.mLabel3.setPixmap(cropped)
-                
-            elif blink_count >=3:
-                break
         
             QApplication.processEvents()
         
@@ -130,8 +114,6 @@ class MyImageViewerWidget(QFrame):
             return
 
             
-
-
 class MyMainWindow(QMainWindow):
     """
     This class creates an empty window with the specified parameters.

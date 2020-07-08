@@ -39,8 +39,12 @@ class VideoRecorder():
         while(self.open==True):
             ret,video_frame = self.video_cap.read()
             if(ret==True):
-                self.video_out.write(video_frame)
-                time.sleep(0.16)
+                try:
+                    self.video_out.write(video_frame)
+                    time.sleep(0.16)
+                except OSError as e:
+                    if e.errno == errno.ENOSPC:
+                        print("No space left on device.")
             else:
                 break
 

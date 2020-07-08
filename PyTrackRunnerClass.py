@@ -19,25 +19,25 @@ class PyTrackRunner():
     def dynamic_import(self,module):
         return importlib.import_module(module)
 
-    def pytrack_runner(self, UI_file_name = "User_ImageUI_EscExit", eyeTrackingFileName='EyeTrackLog', video_source = 0, UI = False, 
-    pupilTracking = False, blinkDetection = False, eyeTrackingLog=True,
-    videoRecorder = False, audioRecorder = False,videoName = 'video', audioName = 'audio', syncAudioVideo = False, destinationPath = '/Output'):
+    def pytrack_runner(self, UI = False, UI_file_name = "User_ImageUI_EscExit", pupilTracking = False, blinkDetection = False,
+    video_source = 0, eyeTrackingLog=True,  eyeTrackingFileName='EyeTrackLog', 
+    videoRecorder = False, videoName = 'video', audioRecorder = False, audioName = 'audio', syncAudioVideo = False, destinationPath = '/Output'):
         """
         This function enables the user to run the functionalities of the library simultaneously. 
         Functionalities include running the UI specified by the user, pupil tracking, blink detection, video recording and audio recording.
         The user can set flags to run the combination of these functionalities. The function allows the user to name the output file.
 
         Args:
-            UI_file_name (str, optional): [This parameter takes the file name of the UI]. Defaults to "User_ImageUI_EscExit".
-            eyeTrackingFileName (str, optional): [This parameter takes the file name for the CSV]. Defaults to 'EyeTrackLog'.
-            video_source (int/str, optional): [This parameter takes either device index or a video file as input]. Defaults to 0.
             UI (bool, optional): [This parameter enables the user to run UI]. Defaults to False.
+            UI_file_name (str, optional): [This parameter takes the file name of the UI]. Defaults to "User_ImageUI_EscExit".
             pupilTracking (bool, optional): [This parameter enables the user to run pupil tracking]. Defaults to False.
             blinkDetection (bool, optional): [This parameter enables the user to run blink detection]. Defaults to False.
+            video_source (int/str, optional): [This parameter takes either device index or a video file as input]. Defaults to 0.
             eyeTrackingLog (bool, optional): [This parameter enables the user to generate a CSV of pupil tracking/ blink detection]. Defaults to True.
+            eyeTrackingFileName (str, optional): [This parameter takes the file name for the CSV]. Defaults to 'EyeTrackLog'.
             videoRecorder (bool, optional): [This parameter enables the user to record video]. Defaults to False.
-            audioRecorder (bool, optional): [This parameter enables the user to record audio]. Defaults to False.
             videoName (str, optional): [This parameter takes the file name for the video]. Defaults to 'video'.
+            audioRecorder (bool, optional): [This parameter enables the user to record audio]. Defaults to False.
             audioName (str, optional): [This parameter takes the file name for the audio]. Defaults to 'audio'.
             syncAudioVideo (bool, optional): [This parameter enables the user to sync audio and video together]. Defaults to False.
             destinationPath (str, optional): [This parameter enables the user to store their output files at the desired location.] Defaults to Outputs Folder.

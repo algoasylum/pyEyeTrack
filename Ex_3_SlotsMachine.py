@@ -27,8 +27,8 @@ class MyImageViewerWidget(QFrame):
             This function spins the slots of the slot machine.
 
     """
-
-    def __init__(self, *args):
+   
+    def __init__(self,*args):
         super(MyImageViewerWidget, self).__init__(*args)
         self.setGeometry(0, 0, 800, 600)
         self.ui = SlotM.Ui_Form()
@@ -48,6 +48,7 @@ class MyImageViewerWidget(QFrame):
         self.ui.mLabel3.setPixmap(cropped)
         self.queue_handler = QueueHandling()
 
+
     def select_random_image(self):
         """
         This function selects an image randomly and returns it after cropping it.
@@ -56,13 +57,10 @@ class MyImageViewerWidget(QFrame):
             image : selects and returns a cropped image
         """
         selected_image_index = random.randint(0, len(self.x) - 1)
-        self.rect = QRect(
-            self.x[selected_image_index],
-            self.y[selected_image_index],
-            300,
-            300)
+        self.rect = QRect(self.x[selected_image_index], self.y[selected_image_index], 300, 300)
         cropped = self.px.copy(self.rect)
-        return cropped, selected_image_index
+        return cropped,selected_image_index
+
 
     def spin(self):
         """
@@ -70,35 +68,37 @@ class MyImageViewerWidget(QFrame):
         The function accesses the queue to monitor the blinks.
         On the first blink, the first slot stops spinning.
         With every blink detection, consecutive slot stops spinning.
-        The function checks if the images on all three slots are the same. If so, the user wins the jackpot.
+        The function checks if the images on all three slots are the same. If so, the user wins the jackpot. 
         """
         blink_count = 0
         for _ in range(0, 200):
             time.sleep((50 + 25 * 9) / 1000)
-
+            
             if self.queue_handler.is_empty() == False:
-                queue_element = self.queue_handler.get_data()
-                if queue_element:
-                    blink_count += 1
-                    print('blink: ', blink_count)
+                queue_element = self.queue_handler.get_data() 
+                if queue_element == True:
+                    blink_count += 1 
+                    print('blink: ',blink_count)
 
             if blink_count >= 3:
                 break
-
+        
             if blink_count < 3:
-                cropped, c = self.select_random_image()
+                cropped,c = self.select_random_image()
                 self.ui.mLabel3.setPixmap(cropped)
-
+            
             if blink_count < 2:
-                cropped, b = self.select_random_image()
+                cropped,b = self.select_random_image()
                 self.ui.mLabel2.setPixmap(cropped)
 
             if blink_count < 1:
-                cropped, a = self.select_random_image()
+                cropped,a = self.select_random_image()
                 self.ui.mLabel.setPixmap(cropped)
 
+        
             QApplication.processEvents()
-
+        
+        
         self.games_played += 1
         if a == b and c == b:
             print("===============")
@@ -108,11 +108,12 @@ class MyImageViewerWidget(QFrame):
         else:
             print("Game Over!")
             self.queue_handler.add_data('Stop')
-
-        if self.games_played > 1:
+            
+        
+        if self.games_played >1:
             return
 
-
+            
 class MyMainWindow(QMainWindow):
     """
     This class creates an empty window with the specified parameters.
@@ -122,12 +123,12 @@ class MyMainWindow(QMainWindow):
 
     Methods:
         KeyPressEvent(e)
-            This function detects key presses.
+            This function detects key presses. 
 
     """
 
-    def __init__(self, parent=None):
-
+    def __init__(self , parent=None):
+        
         QWidget.__init__(self, parent=parent)
         self.setGeometry(500, 450, 940, 320)
         self.setFixedSize(940, 320)
@@ -135,14 +136,17 @@ class MyMainWindow(QMainWindow):
 
         self.mDisplay = MyImageViewerWidget(self)
 
+    
+
     def keyPressEvent(self, e):
         """
-        This function detects a key press.
+        This function detects a key press. 
         On the detection of key press of space bar, the spin function is called.
         On the key press of space bar, the game starts.
         """
         if e.key() == QtCore.Qt.Key_Space:
             self.mDisplay.spin()
+
 
 
 def main():
@@ -153,3 +157,4 @@ def main():
     w = MyMainWindow()
     w.show()
     app.exec_()
+

@@ -7,9 +7,9 @@ import dlib
 class EyeTracking(ABC):
 
     """
-    EyeTracking is an abstract class that is used to implement 
+    EyeTracking is an abstract class that is used to implement
     different types of eye-tracking events.
-    In this library we have used this class to implement 
+    In this library we have used this class to implement
     blink detection and pupil-tracking.
 
     Attributes:
@@ -19,10 +19,10 @@ class EyeTracking(ABC):
 
     Methods:
         csv_writer(file_name)
-            an abstract method that is to be used for 
+            an abstract method that is to be used for
             .csv file generation.
         functionality(frame)
-            an abstract method used to implement type of eye-tracking. 
+            an abstract method used to implement type of eye-tracking.
             e.g. blinking
         start()
             method to start eye-tracking
@@ -34,10 +34,11 @@ class EyeTracking(ABC):
 
     def __init__(self, source):
 
-        self.cap = cv2.VideoCapture(source) #acquire the webcam based on device id
-        self.frame = 0  #frame from the video or live-stream 
-        self.landmarks = "xx"  #variable to store facial landmarks
-        self.close_flag = False #flag used to close the application 
+        # acquire the webcam based on device id
+        self.cap = cv2.VideoCapture(source)
+        self.frame = 0  # frame from the video or live-stream
+        self.landmarks = "xx"  # variable to store facial landmarks
+        self.close_flag = False  # flag used to close the application
 
     @abstractmethod
     def csv_writer(self, file_name):
@@ -54,25 +55,28 @@ class EyeTracking(ABC):
         """
         Implement the eye-tracking functionality required.
         Args:
-            frame (numpy array): it is the frame in the video or captured by 
+            frame (numpy array): it is the frame in the video or captured by
             the camera
         """
         pass
 
     def start(self):
         """
-        This function reads the input from the video or the live-stream. 
-        It also processes the frame acquired and detects the facein the frame. 
-        Then all the facial landmarks are mapped to face detected in the frame. 
-        The frame and the facial landmarks are thenused by the subclassed to 
-        implement blink detection or pupil tracking. 
-        The application terminates if the 'esc' key is pressed or if the 
-        close_flag is set to 'True' .
+        This function reads the input from the video or the live-stream.
+        It also processes the frame acquired and detects the facein the frame.
+        Then all the facial landmarks are mapped to face detected in the frame.
+        The frame and the facial landmarks are thenused by the subclassed to
+        implement blink detection or pupil tracking.
+        The application terminates if the 'esc' key is pressed or if the
+        close_flag is set to 'True'. If the face is not detected for 10 cycles
+        of the loop the application will terminate.
 
         """
+        face_not_detected = 0
         while True:
 
-            if keyboard.is_pressed('esc') or self.close_flag:
+            if keyboard.is_pressed(
+                    'esc') or self.close_flag or face_not_detected >= 10:
                 break
 
             ret, self.frame = self.cap.read()
@@ -87,7 +91,10 @@ class EyeTracking(ABC):
 
             if len(faces) == 0:
                 print('Face not detected. Find better lighting.')
+                face_not_detected += 1
                 continue
+
+            face_not_detected = 0
 
             self.landmarks = self.predictor(self.frame, faces[0])
 

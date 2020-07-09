@@ -8,7 +8,8 @@ from DataHandling import QueueHandling
 
 class PupilTracking(EyeTracking):
     """
-    A subclass of EyeTracking that does pupil tracking i.e. this class will give the pupil centers for both the eyes.
+    A subclass of EyeTracking that does pupil tracking 
+    i.e. this class will give the pupil centers for both the eyes.
 
     Methods:
         detect_eye(eye_points,facial_landmarks)
@@ -17,32 +18,40 @@ class PupilTracking(EyeTracking):
             Calculates the pupil center.
         get_approximate_pupil_rectangle(eye_landmarks_coordinates,frame)
             Returns the part of the frame with only the pupil
-        get_pupil_center_coordinates(eye_landmarks_coordinates,threshold,frame)
+        get_pupil_center_coordinates(eye_landmarks_coordinates,threshold,
+        frame)
             Returns pupil center for a single eye.
         functionality(frame)
             Implements pupil tracking for a given frame.
         csv_writer(file_name)
-            Generates a .csv file with the timestamp and pupil center for both eyes.
+            Generates a .csv file with the timestamp and pupil center 
+            for both eyes.
 
     """
 
     def __init__(self, source):
         super().__init__(source)
-        self.eye_data_log = {"Timestamps": [], "Left_Eye_X": [], "Left_Eye_Y": []  # dictionary to store the location of the pupil center and the corresponding timestamp
+        self.eye_data_log = {"Timestamps": [], "Left_Eye_X": [], "Left_Eye_Y": []  
                              , "Right_Eye_X": [], "Right_Eye_Y": []}
-        # intialized queue to do real-time data transfer
+        # dictionary to store the location of the pupil center and 
+        # the corresponding timestamp
         self.queue_handler = QueueHandling()
+        # intialized queue to do real-time data transfer
 
     def detect_eye(self, eye_points, facial_landmarks):
         """
-        This function returns a numpy array of the x, y coordinates of the landmarks that define the eye in the frame.
+        This function returns a numpy array of the x, y coordinates of the 
+        landmarks that define the eye in the frame.
 
         Args:
-            eye_points (list): the list of indicies of the facial landmarks which represent an eye
-            facial_landmarks (dlib.full_object_detection): this object helps get the location of the eye in the frame
+            eye_points (list): the list of indicies of the facial landmarks 
+            which represent an eye 
+            facial_landmarks (dlib.full_object_detection): this object helps 
+            get the location of the eye in the frame
 
         Returns:
-            numpy array: the array of points that define the location of the eye in the frame.
+            numpy array: the array of points that define the location of the 
+            eye in the frame.
         """
 
         eye_landmarks_coordinates = np.array(
@@ -63,15 +72,20 @@ class PupilTracking(EyeTracking):
 
     def get_connected_components(self, thresholded_pupil_region):
         """
-        This function returns the pupil ceter of the eye. The input parameter is the thresholded pupil region.
-        The pupil center is the centroid of the connected component with the largest area. Since we already have the approximate
-        pupil area, we assume that the connected component with the largest area to be the the pupil.
+        This function returns the pupil ceter of the eye. 
+        The input parameter is the thresholded pupil region.
+        The pupil center is the centroid of the connected component
+        with the largest area. Since we already have the approximate
+        pupil area, we assume that the connected component with the 
+        largest area to be the the pupil.
 
         Args:
-            thresholded_pupil_region (numpy array): the approximate pupil area after filtering and thresholding is applied.
+            thresholded_pupil_region (numpy array): the approximate 
+            pupil area after filtering and thresholding is applied.
 
         Returns:
-            (float, float): a tuple with the x, y coordinate of the pupil center.
+            (float, float): a tuple with the x, y coordinate of the 
+            pupil center.
         """
 
         _, _, stats, centroids = cv2.connectedComponentsWithStats(
@@ -93,13 +107,17 @@ class PupilTracking(EyeTracking):
     def get_approximate_pupil_rectangle(
             self, eye_landmarks_coordinates, frame):
         """
-        In this function we first find the minimum and maximum for x coordinate of the location the eye and similarly for the y coordinate.
-        Here we have altered the values such that after cropping the area would give us only the region inside the eye. This is the approximately
+        In this function we first find the minimum and maximum for 
+        x coordinate of the location the eye and similarly for the y coordinate.
+        Here we have altered the values such that after cropping the area would 
+        give us only the region inside the eye. This is the approximately
         the region where the pupil lies.
 
         Args:
-            eye_landmarks_coordinates (numpy array): array of the x,y coordinates of the location the eye
-            frame (numpy array): it is the frame in the video or captured by the camera
+            eye_landmarks_coordinates (numpy array): array of the x,y 
+            coordinates of the location the eye
+            frame (numpy array): it is the frame in the video or captured 
+            by the camera
 
         Returns:
             numpy array: the area of the eye cropped tightly
@@ -120,12 +138,15 @@ class PupilTracking(EyeTracking):
             threshold,
             frame):
         """
-        This function returns the pupil center for a single eye. First we acquire the approximate region of the frame in which the pupil lies.
-        Then we perform thresholding on this cropped part of the frame. We then send this proceesed part to the get_connected_components function
+        This function returns the pupil center for a single eye. First we acquire 
+        the approximate region of the frame in which the pupil lies.
+        Then we perform thresholding on this cropped part of the frame. 
+        We then send this proceesed part to the get_connected_components function
         which returns the pupil center.
 
         Args:
-            eye_landmarks_coordinates (numpy array): array of the x,y coordinates of the location the eye
+            eye_landmarks_coordinates (numpy array): array of the x,y coordinates 
+            of the location the eye
             threshold (int): the value that should be used for thresholding
             frame (numpy array): it is the frame in the video or captured by the camera
 
@@ -144,13 +165,17 @@ class PupilTracking(EyeTracking):
 
     def functionality(self, frame):
         """
-        This method overrides the method in the superclass. This method gets the pupil center for both the eyes in the frame.
-        Once the pupil centers are acquired we append them in eye_data_log dictonary along with the timestamp. We also add this
-        data to the queue for real-time data transfer. Finally, we also toggle the close_flag if the string 'Stop' is found
+        This method overrides the method in the superclass. 
+        This method gets the pupil center for both the eyes in the frame.
+        Once the pupil centers are acquired we append them in eye_data_log 
+        dictonary along with the timestamp.
+        We also add this data to the queue for real-time data transfer. 
+        Finally, we also toggle the close_flag if the string 'Stop' is found
         in the queue. This can be used by the user to stop the application.
 
         Args:
-            frame (numpy array): it is the frame in the video or captured by the camera
+            frame (numpy array): it is the frame in the video or captured 
+            by the camera
         """
 
         landmarks_coordinates_left_eye = self.detect_eye(
@@ -182,7 +207,8 @@ class PupilTracking(EyeTracking):
 
     def csv_writer(self, file_name):
         """
-        Generates a .csv file with the timestamp and pupil centers with the given file name.
+        Generates a .csv file with the timestamp and pupil centers with the 
+        given file name.
 
         Args:
             file_name (string): name of the .csv file to be generated.

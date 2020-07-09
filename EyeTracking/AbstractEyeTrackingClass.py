@@ -7,18 +7,20 @@ import dlib
 class EyeTracking(ABC):
 
     """
-    EyeTracking is an abstract class that is used to implement different types
-    of eye-tracking events.
-    In this library we have used this class to implement blink detection and 
-    pupil-tracking.
+    EyeTracking is an abstract class that is used to implement 
+    different types of eye-tracking events.
+    In this library we have used this class to implement 
+    blink detection and pupil-tracking.
 
     Attributes:
         detector: default face detector in dlib
-        predictor: used to map the facial landmark on the face detected
+        predictor: used to map the facial landmark on the
+        detected face
 
     Methods:
         csv_writer(file_name)
-            an abstract method that is to be used for .csv file generation.
+            an abstract method that is to be used for 
+            .csv file generation.
         functionality(frame)
             an abstract method used to implement type of eye-tracking. 
             e.g. blinking
@@ -32,11 +34,10 @@ class EyeTracking(ABC):
 
     def __init__(self, source):
 
-        
-        self.cap = cv2.VideoCapture(source) # load the video or acquire the webcam based on device id
-        self.frame = 0  # frame from the video or live-stream intialed to 0
-        self.landmarks = "xx"  # variable to store facial landmarks
-        self.close_flag = False  # flag used to close the application initialsed to Flase
+        self.cap = cv2.VideoCapture(source) #acquire the webcam based on device id
+        self.frame = 0  #frame from the video or live-stream 
+        self.landmarks = "xx"  #variable to store facial landmarks
+        self.close_flag = False #flag used to close the application 
 
     @abstractmethod
     def csv_writer(self, file_name):

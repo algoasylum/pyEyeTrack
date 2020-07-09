@@ -23,44 +23,47 @@ class Blinking (EyeTracking):
 
     def __init__(self, source):
 
-        super().__init__(source)  # constuctor of the superclass - EyeTracking
-        self.timestamps = []  # stores timestamps everytime the subject blinks
-        self.blink_ratios = []  # stores the blink ratio everytime the subject blinks
-        self.queue_handler = QueueHandling() # intialized queue to do real-time data transfer
-        self.BLINK_RATIO_THRESHOLD = 5.7  # value of the blink ratio threshold
+        super().__init__(source) #constuctor of the superclass- EyeTracking
+        self.timestamps = []  #stores timestamps of the blink
+        self.blink_ratios = []  #stores the blink ratio
+        self.queue_handler = QueueHandling() #queue for real-time data transfer
+        self.BLINK_RATIO_THRESHOLD = 5.7 #value of the blink ratio threshold
 
     def midpoint(self, point_1, point_2):
         """
-        This function calculates the midpoint of two dlib.point objects and 
-        returns the result as a tuple of integers
+        This function calculates the midpoint of two dlib.point 
+        objects and returns the result as a tuple of integers
 
         Args:
-            point_1 (dlib.point): first point required to calculate the midpoint
-            point_2 (dlib.point): second point required to calculate the midpoint
+            point_1 (dlib.point): first point to calculate the midpoint
+            point_2 (dlib.point): second point to calculate the midpoint
 
         Returns:
-            (int, int): a tuple containing the x and y coordinates of the midpoint.
+            (int, int): a tuple containing the x and y coordinates 
+            of the midpoint.
         """
         return (int((point_1.x + point_2.x) / 2),
                 int((point_1.y + point_2.y) / 2))
 
     def get_blink_ratio(self, eye_points, facial_landmarks):
         """
-        This function calculates the blink ratio for a single eye. blink_ratio 
-        is the ratio of the horizontal length of the eye to the vertical length
-        of the eye. The horizontal and vertical lengths are obtained by 
-        calculating the Euclidean distance between landmarks of the eye.
+        This function calculates the blink ratio for a single eye. 
+        blink_ratio is the ratio of the horizontal length of the eye 
+        to the vertical length of the eye. 
+        The horizontal and vertical lengths are obtained by calculating 
+        the Euclidean distance between landmarks of the eye.
 
         Args:
-            eye_points (list): the list of indicies of the facial landmarks 
-                               which represent an eye
+            eye_points (list): the list of indicies of the facial 
+                                landmarks which represent an eye
             facial_landmarks (dlib.full_object_detection): 
-                               this object helps get the location of the eye 
-                               in the frame.
+                               this object helps get the location of 
+                               the eye in the frame.
 
         Returns:
-            float: returns the blink ratio i.e. ratio of the horizontal length 
-                   of the eye to the vertical length of the eye
+            float: returns the blink ratio i.e. ratio of the 
+                   horizontal length of the eye to the vertical 
+                   length of the eye
         """
         corner_left = (
             facial_landmarks.part(eye_points[0]).x, 
@@ -87,15 +90,22 @@ class Blinking (EyeTracking):
 
     def functionality(self, frame):
         """
-        This method overrides the method in the superclass. This method gets the blink ratios for both the eyes
-        and calculates the average blink ratio. If the value of the average blink ratio is greater than the BLINK_RATIO_THRESHOLD
-        we presume that the subject blinked. If the subject blinks we add the timestamp of the blink and the value of the blink ratio
-        to the respective lists. We also add True to the queue on blink detection. This queue can be acessed
-        by the user to see if the subject blinked in real-time. Finally, we also toggle the close_flag if the string 'Stop' is found
+        This method overrides the method in the superclass. 
+        This method gets the blink ratios for both the eyes
+        and calculates the average blink ratio. If the value of the 
+        average blink ratio is greater than the BLINK_RATIO_THRESHOLD
+        we presume that the subject blinked. 
+        If the subject blinks we add the timestamp of the blink 
+        and the value of the blink ratio to the respective lists. 
+        We also add True to the queue on blink detection. 
+        This queue can be acessed by the user to see if the subject 
+        blinked in real-time. 
+        Finally, we also toggle the close_flag if the string 'Stop' is found
         in the queue. This can be used by the user to stop the application.
 
         Args:
-            frame (numpy array): it is the frame in the video or captured by the camera
+            frame (numpy array): it is the frame in the video or 
+            captured by the camera
         """
 
         left_eye_ratio = self.get_blink_ratio(
@@ -115,8 +125,8 @@ class Blinking (EyeTracking):
 
     def csv_writer(self, file_name='blink_log'):
         """
-        Generates a .csv file with the timestamp and blink ratio with the given 
-        file name.
+        Generates a .csv file with the timestamp and blink ratio 
+        with the given file name.
 
         Args:
             file_name (string): name of the .csv file to be generated.

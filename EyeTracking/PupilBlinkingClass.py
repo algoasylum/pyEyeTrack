@@ -10,20 +10,23 @@ from EyeTracking.AbstractEyeTrackingClass import EyeTracking
 class PupilBlinking(Blinking, PupilTracking, EyeTracking):
 
     """
-    A subclass of EyeTracking that does blink detection and pupil-tracking.
+    A subclass of EyeTracking that does blink detection and 
+    pupil-tracking.
 
     Methods:
         functionality(frame)
-            Implements pupil tracking and blink detection for a given frame.
+            Implements pupil tracking and blink detection for a 
+            given frame.
         csv_writer(file_name)
-            Generates a .csv file with the timestamp,pupil center and blink detection for both eyes.
+            Generates a .csv file with the timestamp,pupil center and 
+            blink detection for both eyes.
     """
 
     def __init__(self, source):
         super().__init__(source)
-        # dictionary to store the location of the pupil center, blink and the
-        # corresponding timestamp
-        # #stores the blink ratio everytime the subject blinks
+        # dictionary to store the location of the pupil center, 
+        # blink and the corresponding timestamp
+        # stores the blink ratio everytime the subject blinks
         self.eye_data_log = {
             "Timestamps": [],
             "Left_Eye_X": [],
@@ -36,22 +39,32 @@ class PupilBlinking(Blinking, PupilTracking, EyeTracking):
 
     def functionality(self, frame):
         """
-        This method overrides the method in the superclass. This method gets the blink ratios for both the eyes and calculates the
-        and calculates the average blink ratio.
+        This method overrides the method in the superclass. 
+        This method gets the blink ratios for both the eyes and 
+        calculates the average blink ratio.
 
-        If the value of the average blink ratio is greater than the BLINK_RATIO_THRESHOLD average blink ratio we presume that the subject
-        blinked. Here, we set the value of the 'Blink' field in the dictonary to 'False'.We add the data to the dictonary as well as the
-        queue to facilitate real-time data transfer. The values of the pupil centers are set to 0 when the subject is blinking.
+        If the value of the average blink ratio is greater than the 
+        BLINK_RATIO_THRESHOLD,we presume that the subject blinked. 
+        Here, we set the value of the 'Blink' field in the dictonary 
+        to 'False'.We add the data to the dictonary as well as the 
+        queue to facilitate real-time data transfer. 
+        The values of the pupil centers are set to 0 when the 
+        subject is blinking.
 
-        If the blink ratio is less than the BLINK_RATIO_THRESHOLD we calcute the location of the pupil center for both the eyes. Once the
-        pupil centers are acquired we append them in eye_data_log dictonary along with the timestamp. Here, we set the value of the
-        'Blink' field in the dictonary to 'False'. We also add this data to the queue for real-time data transfer.
+        If the blink ratio is less than the BLINK_RATIO_THRESHOLD,
+        we calcute the location of the pupil center for both the eyes.
+        Once the pupil centers are acquired we append them in eye_data_log
+        dictonary along with the timestamp. 
+        Here, we set the 'Blink' field in the dictonary to 'False'. 
+        We also add this data to the queue for real-time data transfer.
 
-        Finally, we also toggle the close_flag if the string 'Stop' is found in the queue. This can be used by the user to
+        Finally, we also toggle the close_flag if the string 'Stop' is 
+        found in the queue. This can be used by the user to
         stop the application.
 
         Args:
-            frame (numpy array): it is the frame in the video or captured by the camera
+            frame (numpy array): it is the frame in the video or 
+            captured by the camera
         """
 
         left_eye_ratio = self.get_blink_ratio(
@@ -103,7 +116,8 @@ class PupilBlinking(Blinking, PupilTracking, EyeTracking):
 
     def csv_writer(self, file_name):
         """
-        Generates a .csv file with the timestamp and pupil centers with the given file name.
+        Generates a .csv file with the timestamp and pupil centers with 
+        the given file name.
 
         Args:
             file_name (string): name of the .csv file to be generated.

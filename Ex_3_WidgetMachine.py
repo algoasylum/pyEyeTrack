@@ -8,10 +8,13 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_Form(object):
     """
-    This code has been adopted from https://github.com/flvoyer/SlotMachine. This code is used in the execution of the slots machine UI.
+    This code has been adopted from https://github.com/flvoyer/SlotMachine. 
+    This code is used in the execution of the slots machine UI.
     """
+
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.setEnabled(True)

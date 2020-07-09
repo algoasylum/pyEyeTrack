@@ -46,7 +46,7 @@ class EyeTracking(ABC):
     @abstractmethod
     def functionality(self,frame):
         """
-        Implement the eye-tracking functionality required. 
+        Implement the eye-tracking functionality required.
         Args:
             frame (numpy array): it is the frame in the video or captured by the camera
         """

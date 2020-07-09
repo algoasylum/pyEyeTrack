@@ -2,9 +2,10 @@ from queue import Queue
 
 q = Queue()
 
+
 class QueueHandling():
     """
-    This class is used to handles the queue in real-time. 
+    This class is used to handles the queue in real-time.
     Methods:
         add_data(data)
             This function adds the data to the queue.
@@ -15,16 +16,16 @@ class QueueHandling():
         search_queue(key)
             This function is used to search if a specified element is present in the queue.
     """
-    
+
     def __init__(self):
         global q
 
-    def add_data(self , data):
+    def add_data(self, data):
         """
         This function adds the data to the queue.
 
         Args:
-            data ([tuple]): The tuple consists of the pupil center coordinates with timestamps. 
+            data ([tuple]): The tuple consists of the pupil center coordinates with timestamps.
         """
         q.put(data)
 
@@ -44,7 +45,7 @@ class QueueHandling():
         Returns:
             boolean: The function returns True if the queue is empty. If the queue has data elements, then it returns False.
         """
-        if q.empty() == True:
+        if q.empty():
             return True
         else:
             return False

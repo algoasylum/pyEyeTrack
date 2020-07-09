@@ -72,7 +72,7 @@ class AudioRecorder():
                 waveFile.writeframes(b''.join(self.audioframes))
                 waveFile.close()
             except OSError as e:
-                if e.errno == errno.ENOSPC:
+                if e.errno == e.errno.ENOSPC:
                     print("No space left on device")
 
         else:

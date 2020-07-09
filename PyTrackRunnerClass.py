@@ -18,9 +18,21 @@ class PyTrackRunner():
     def dynamic_import(self, module):
         return importlib.import_module(module)
 
-    def pytrack_runner(self, UI = False, UI_file_name = "User_ImageUI_EscExit", pupilTracking = False, blinkDetection = False,
-    video_source = 0, eyeTrackingLog=True,  eyeTrackingFileName='EyeTrackLog', 
-    videoRecorder = False, videoName = 'video', audioRecorder = False, audioName = 'audio', syncAudioVideo = False, destinationPath = '/Output'):
+    def pytrack_runner(
+            self,
+            UI=False,
+            UI_file_name="User_ImageUI_EscExit",
+            pupilTracking=False,
+            blinkDetection=False,
+            video_source=0,
+            eyeTrackingLog=True,
+            eyeTrackingFileName='EyeTrackLog',
+            videoRecorder=False,
+            videoName='video',
+            audioRecorder=False,
+            audioName='audio',
+            syncAudioVideo=False,
+            destinationPath='/Output'):
         """
         This function enables the user to run the functionalities of the library simultaneously.
         Functionalities include running the UI specified by the user, pupil tracking, blink detection, video recording and audio recording.
@@ -45,11 +57,14 @@ class PyTrackRunner():
         startEyeTracking = False
         outputPath = destinationPath
 
-        if os.access(destinationPath, os.W_OK) == False and destinationPath != '/Output':
+        if os.access(
+                destinationPath,
+                os.W_OK) == False and destinationPath != '/Output':
             print('You may not have write permission.Try changing the destination path.')
             sys.exit()
 
-        if os.path.exists(destinationPath) == False and destinationPath != '/Output':
+        if os.path.exists(
+                destinationPath) == False and destinationPath != '/Output':
             os.mkdir(destinationPath)
         elif destinationPath == '/Output':
             currentPath = os.getcwd()

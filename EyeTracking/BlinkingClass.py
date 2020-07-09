@@ -31,8 +31,8 @@ class Blinking (EyeTracking):
 
     def midpoint(self, point_1, point_2):
         """
-        This function calculates the midpoint of two dlib.point objects and returns the result as
-        a tuple of integers
+        This function calculates the midpoint of two dlib.point objects and 
+        returns the result as a tuple of integers
 
         Args:
             point_1 (dlib.point): first point required to calculate the midpoint
@@ -46,34 +46,34 @@ class Blinking (EyeTracking):
 
     def get_blink_ratio(self, eye_points, facial_landmarks):
         """
-        This function calculates the blink ratio for a single eye. blink_ratio is the ratio of the horizontal length
-        of the eye to the vertical length of the eye. The horizontal and vertical lengths are obtained by calculating
-        the Euclidean distance between landmarks of the eye.
+        This function calculates the blink ratio for a single eye. blink_ratio 
+        is the ratio of the horizontal length of the eye to the vertical length
+        of the eye. The horizontal and vertical lengths are obtained by 
+        calculating the Euclidean distance between landmarks of the eye.
 
         Args:
-            eye_points (list): the list of indicies of the facial landmarks which represent an eye
-            facial_landmarks (dlib.full_object_detection): this object helps get the location of the eye in the frame.
+            eye_points (list): the list of indicies of the facial landmarks 
+                               which represent an eye
+            facial_landmarks (dlib.full_object_detection): 
+                               this object helps get the location of the eye 
+                               in the frame.
 
         Returns:
-            float: returns the blink ratio i.e. ratio of the horizontal length of the eye to the vertical length
-                   of the eye
+            float: returns the blink ratio i.e. ratio of the horizontal length 
+                   of the eye to the vertical length of the eye
         """
         corner_left = (
-            facial_landmarks.part(
-                eye_points[0]).x, facial_landmarks.part(
-                eye_points[0]).y)
+            facial_landmarks.part(eye_points[0]).x, 
+            facial_landmarks.part(eye_points[0]).y)
         corner_right = (
-            facial_landmarks.part(
-                eye_points[3]).x, facial_landmarks.part(
-                eye_points[3]).y)
+            facial_landmarks.part(eye_points[3]).x, 
+            facial_landmarks.part(eye_points[3]).y)
         center_top = self.midpoint(
-            facial_landmarks.part(
-                eye_points[1]), facial_landmarks.part(
-                eye_points[2]))
+            facial_landmarks.part(eye_points[1]), 
+            facial_landmarks.part(eye_points[2]))
         center_bottom = self.midpoint(
-            facial_landmarks.part(
-                eye_points[5]), facial_landmarks.part(
-                eye_points[4]))
+            facial_landmarks.part(eye_points[5]), 
+            facial_landmarks.part(eye_points[4]))
 
         horizontal_length = hypot(
             (corner_left[0] - corner_right[0]),
@@ -115,7 +115,8 @@ class Blinking (EyeTracking):
 
     def csv_writer(self, file_name='blink_log'):
         """
-        Generates a .csv file with the timestamp and blink ratio with the given file name.
+        Generates a .csv file with the timestamp and blink ratio with the given 
+        file name.
 
         Args:
             file_name (string): name of the .csv file to be generated.

@@ -7,6 +7,7 @@ import subprocess
 import os
 import sys
 
+
 class VideoRecorder():
     """
     VideoRecorder class is used to record video.
@@ -19,26 +20,29 @@ class VideoRecorder():
 
     """
 
-    def __init__(self,file_name = 'video'):
-        self.open  = True
+    def __init__(self, file_name='video'):
+        self.open = True
         self.device_index = 0
         self.fps = 6
         self.fourcc = "MJPG"
-        self.frameSize = (640,480)
+        self.frameSize = (640, 480)
         self.file_name = file_name + ".avi"
         self.video_cap = cv2.VideoCapture(self.device_index)
         self.video_writer = cv2.VideoWriter_fourcc(*self.fourcc)
-        self.video_out = cv2.VideoWriter(self.file_name,self.video_writer,self.fps,self.frameSize)
-
+        self.video_out = cv2.VideoWriter(
+            self.file_name,
+            self.video_writer,
+            self.fps,
+            self.frameSize)
 
     def record(self):
         """
         The function records video while ret is True. Frame is written in the video every 160 ms.
         """
 
-        while(self.open==True):
-            ret,video_frame = self.video_cap.read()
-            if(ret==True):
+        while(self.open):
+            ret, video_frame = self.video_cap.read()
+            if(ret):
                 try:
                     self.video_out.write(video_frame)
                     time.sleep(0.16)
@@ -52,9 +56,9 @@ class VideoRecorder():
         """
         The function stops recording video. All the openCV objects are released.
         """
-        if self.open==True:
+        if self.open:
             print("video stop")
-            self.open=False
+            self.open = False
             self.video_out.release()
             self.video_cap.release()
             cv2.destroyAllWindows()

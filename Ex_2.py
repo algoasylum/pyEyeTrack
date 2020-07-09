@@ -2,6 +2,6 @@ from PyTrackRunnerClass import PyTrackRunner
 
 
 ptr = PyTrackRunner()
-ptr.pytrack_runner(UI_file_name = 'Ex_2_ImageUI',UI = True,pupilTracking= True, blinkDetection=True, 
+ptr.pytrack_runner(UI = True, UI_file_name = 'Ex_2_ImageUI',pupilTracking= True, blinkDetection=True, 
                 eyeTrackingLog = True, eyeTrackingFileName= 'User_2')
 

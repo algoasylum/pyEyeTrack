@@ -16,10 +16,12 @@ class AudioRecorder():
 
     Methods:
         record()
-            This function records audio until the open flag is set to False.
+            This function records audio until the open 
+            flag is set to False.
         stop()
             This function stops recording the audio.
-            The audio frames are written into .wav file.
+            The audio frames are written into 
+            .wav file.
 
     """
 
@@ -33,17 +35,19 @@ class AudioRecorder():
         self.audio = pyaudio.PyAudio()
 
         self.stream = self.audio.open(
-            format=self.format,
-            channels=self.channels,
-            rate=self.rate,
-            input=True,
+            format = self.format,
+            channels = self.channels,
+            rate = self.rate,
+            input = True,
             frames_per_buffer=self.frames_per_buffer)
         self.audioframes = []
 
     def record(self):
         """
-        The function records audio until the open flag is set to False.
-        The frames read by the stream are appended into audio frames.
+        The function records audio until the open flag 
+        is set to False.
+        The frames read by the stream are appended 
+        into audio frames.
         """
         self.stream.start_stream()
         while(self.open):
@@ -54,8 +58,10 @@ class AudioRecorder():
 
     def stop(self):
         """
-        The function stops recording audio, thereby also stopping the thread.
-        Audio frames are written into a .wav file. The stream is stopped and closed.
+        The function stops recording audio, thereby also 
+        stopping the thread.
+        Audio frames are written into a .wav file. 
+        The stream is stopped and closed.
         """
         if self.open:
             try:
@@ -72,7 +78,7 @@ class AudioRecorder():
                 waveFile.writeframes(b''.join(self.audioframes))
                 waveFile.close()
             except OSError as e:
-                if e.errno == e.errno.ENOSPC:
+                if e.errno == os.errno.ENOSPC:
                     print("No space left on device")
 
         else:

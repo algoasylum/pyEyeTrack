@@ -16,7 +16,8 @@ class VideoRecorder():
         record()
             The function records video while ret is True.
         stop()
-            The function stops recording video. All the openCV objects are released.
+            The function stops recording video. 
+            All the openCV objects are released.
 
     """
 
@@ -37,7 +38,8 @@ class VideoRecorder():
 
     def record(self):
         """
-        The function records video while ret is True. Frame is written in the video every 160 ms.
+        The function records video while ret is True. 
+        Frame is written in the video every 160 ms.
         """
 
         while(self.open):
@@ -47,14 +49,15 @@ class VideoRecorder():
                     self.video_out.write(video_frame)
                     time.sleep(0.16)
                 except OSError as e:
-                    if e.errno == errno.ENOSPC:
+                    if e.errno == os.errno.ENOSPC:
                         print("No space left on device.")
             else:
                 break
 
     def stop(self):
         """
-        The function stops recording video. All the openCV objects are released.
+        The function stops recording video. 
+        All the openCV objects are released.
         """
         if self.open:
             print("video stop")

@@ -111,7 +111,7 @@ class PupilBlinking(Blinking, PupilTracking, EyeTracking):
                 False)
             self.queue_handler.add_data(pupil_center_data)
 
-        if self.queue_handler.search_queue('Stop'):
+        if self.queue_handler.search_element('Stop'):
             self.close_flag = True
 
     def csv_writer(self, file_name):

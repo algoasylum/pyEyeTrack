@@ -202,7 +202,7 @@ class PupilTracking(EyeTracking):
             pupil_center_right_eye[1])
         self.queue_handler.add_data(pupil_center_data)
 
-        if self.queue_handler.search_queue('Stop'):
+        if self.queue_handler.search_element('Stop'):
             self.close_flag = True
 
     def csv_writer(self, file_name):

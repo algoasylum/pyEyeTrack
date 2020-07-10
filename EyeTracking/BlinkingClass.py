@@ -120,7 +120,7 @@ class Blinking (EyeTracking):
             self.timestamps.append(timestamp)
             self.blink_ratios.append(blink_ratio)
 
-        if self.queue_handler.search_queue('Stop'):
+        if self.queue_handler.search_element('Stop'):
             self.close_flag = True
 
     def csv_writer(self, file_name='blink_log'):

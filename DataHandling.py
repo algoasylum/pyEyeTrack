@@ -54,7 +54,7 @@ class QueueHandling():
         else:
             return False
 
-    def search_queue(self, key):
+    def search_element(self, key):
         """
         This function is used to search if a specified element is present in 
         the queue.

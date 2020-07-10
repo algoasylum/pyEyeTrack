@@ -46,7 +46,7 @@ class PyTrackRunner():
             Defaults to False.
 
             UI_file_name (str, optional): This parameter takes the file name 
-            of the UI]. Defaults to "User_ImageUI_EscExit".
+            of the UI. Defaults to "User_ImageUI_EscExit".
 
             pupilTracking (bool, optional): This parameter enables the user to 
             run pupil tracking. Defaults to False.

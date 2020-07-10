@@ -13,7 +13,7 @@ class QueueHandling():
             This function returns the data elements in the queue.
         is_empty()
             This function checks if the queue is empty.
-        search_queue(key)
+        search_element(key)
             This function is used to search if a specified element is 
             present in the queue.
     """

@@ -79,7 +79,7 @@ class PyTrackRunner():
             sync audio and video together. Defaults to False.
 
             destinationPath (str, optional): This parameter enables the user to 
-            store their output files at the desired location. Defaults to Outputs Folder.
+            store their output files at the desired location. Defaults to Output Folder.
         """
 
         startEyeTracking = False
@@ -101,6 +101,13 @@ class PyTrackRunner():
                 os.mkdir(outputPath)
 
         outputPath = outputPath + '/'
+
+        if pupilTracking or blinkDetection and videoRecorder:
+            print('Video Recording and Eye Tracking functionalities ' 
+            'require access to the webcam simultaneously and are therefore ' 
+            'recommended not to run these functionalities simultaneously.')
+            sys.exit()
+
 
         if pupilTracking or blinkDetection:
             startEyeTracking = True

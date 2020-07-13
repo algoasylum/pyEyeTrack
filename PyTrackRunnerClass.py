@@ -11,6 +11,11 @@ import subprocess
 
 
 class PyTrackRunner():
+    """Pytrack is a pupil tracking library, built on top of the 
+       Python programming language. The library provides various 
+       functionalities like pupil tracking, blink detection, video, 
+       and audio recording on the user-specified UI.
+    """
 
     def __init__(self):
         pass
@@ -66,20 +71,23 @@ class PyTrackRunner():
             videoRecorder (bool, optional): This parameter enables the user to 
             record video. Defaults to False.
 
-            videoName (str, optional): This parameter takes the file name for 
-            the video. Defaults to 'video'.
+            videoName (str, optional): This parameter enables the user to specify 
+            the filename with which the recorded video is to be saved.
+            Defaults to 'video'.
 
             audioRecorder (bool, optional): This parameter enables the user to 
             record audio. Defaults to False.
 
-            audioName (str, optional): This parameter takes the file name for 
-            the audio. Defaults to 'audio'.
+            audioName (str, optional):  This parameter enables the user to specify 
+            the filename with which the recorded video is to be saved.
+            Defaults to 'audio'.
 
             syncAudioVideo (bool, optional): This parameter enables the user to 
             sync audio and video together. Defaults to False.
 
-            destinationPath (str, optional): This parameter enables the user to 
-            store their output files at the desired location. Defaults to Output Folder.
+            destinationPath (str, optional): The parameter enables the user to specify 
+            the location of the output files. Defaults to ‘/Output’.
+
         """
 
         startEyeTracking = False

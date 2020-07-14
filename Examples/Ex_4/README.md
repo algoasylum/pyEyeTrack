@@ -1,4 +1,4 @@
-Running Pupil Tracking on a Video Input
+Running Pupil Tracking and Blink Detection on a Video Input
 
 Description: This application/demo tracks eyes and returns the pupil coordinates from a video.
 

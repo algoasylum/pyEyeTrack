@@ -110,7 +110,7 @@ class PyTrackRunner():
 
         outputPath = outputPath + '/'
 
-        if pupilTracking or blinkDetection and videoRecorder:
+        if (pupilTracking or blinkDetection) and videoRecorder:
             print('Video Recording and Eye Tracking functionalities ' 
             'require access to the webcam simultaneously and are therefore ' 
             'recommended not to run these functionalities simultaneously.')

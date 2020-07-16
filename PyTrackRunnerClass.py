@@ -48,45 +48,45 @@ class PyTrackRunner():
 
         Args:
             UI (bool, optional): This parameter enables the user to run UI. 
-            Defaults to False.
+            Default: False.
 
             UI_file_name (str, optional): This parameter takes the file name 
-            of the UI. Defaults to "User_ImageUI_EscExit".
+            of the UI. Default: "User_ImageUI_EscExit".
 
             pupilTracking (bool, optional): This parameter enables the user to 
-            run pupil tracking. Defaults to False.
+            run pupil tracking. Default: False.
 
             blinkDetection (bool, optional): This parameter enables the user 
-            to run blink detection. Defaults to False.
+            to run blink detection. Default: False.
 
             video_source (int/str, optional): This parameter takes either 
-            device index or a video file as input. Defaults to 0.
+            device index or a video file as input. Default: 0.
 
             eyeTrackingLog (bool, optional): This parameter enables the user to 
-            generate a CSV of pupil tracking/ blink detection. Defaults to True.
+            generate a CSV of pupil tracking/ blink detection. Default: True.
 
             eyeTrackingFileName (str, optional): This parameter takes the file name 
-            for the CSV. Defaults to 'EyeTrackLog'.
+            for the CSV. Default: 'EyeTrackLog'.
 
             videoRecorder (bool, optional): This parameter enables the user to 
-            record video. Defaults to False.
+            record video. Default: False.
 
             videoName (str, optional): This parameter enables the user to specify 
             the filename with which the recorded video is to be saved.
-            Defaults to 'video'.
+            Default: 'video'.
 
             audioRecorder (bool, optional): This parameter enables the user to 
-            record audio. Defaults to False.
+            record audio. Default: False.
 
             audioName (str, optional):  This parameter enables the user to specify 
             the filename with which the recorded video is to be saved.
-            Defaults to 'audio'.
+            Default: 'audio'.
 
             syncAudioVideo (bool, optional): This parameter enables the user to 
-            sync audio and video together. Defaults to False.
+            sync audio and video together. Default: False.
 
             destinationPath (str, optional): The parameter enables the user to specify 
-            the location of the output files. Defaults to ‘/Output’.
+            the location of the output files. Default: ‘/Output’.
 
         """
 

@@ -1,7 +1,7 @@
-from PyTrackRunnerClass import PyTrackRunner
+from PyTrackRunnerClass import PyTrack
 
 
-ptr = PyTrackRunner()
+ptr = PyTrack()
 ptr.pytrack_runner(
     UI=True,
     UI_file_name='Ex_3_SlotsMachine',

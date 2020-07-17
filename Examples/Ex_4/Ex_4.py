@@ -1,7 +1,7 @@
-from PyTrackRunnerClass import PyTrackRunner
+from PyTrackRunnerClass import PyTrack
 
 
-ptr = PyTrackRunner()
+ptr = PyTrack()
 ptr.pytrack_runner(
     pupilTracking=True,
     blinkDetection=True,

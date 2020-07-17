@@ -1,7 +1,7 @@
-from PyTrackRunnerClass import PyTrackRunner
+from PyTrackRunnerClass import PyTrack
 
 
-ptr = PyTrackRunner()
+ptr = PyTrack()
 ptr.pytrack_runner(
     UI=True,
     UI_file_name='Ex_5_ImageUI_EscExit',
@@ -9,5 +9,6 @@ ptr.pytrack_runner(
     audioName='audio4',
     videoName='video4',
     videoRecorder=True,
-    syncAudioVideo=True)
+    syncAudioVideo=True,
+    destinationPath=r'C:\Users\Kanchan\Desktop')
     

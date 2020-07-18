@@ -2,7 +2,7 @@ import cv2
 import keyboard
 from abc import ABC, abstractmethod
 import dlib
-
+import sys
 
 class EyeTracking(ABC):
 
@@ -78,7 +78,8 @@ class EyeTracking(ABC):
             if keyboard.is_pressed(
                     'esc') or self.close_flag or face_not_detected >= 10:
                 break
-
+                
+                
             ret, self.frame = self.cap.read()
 
             if not ret:

@@ -119,6 +119,7 @@ class Blinking (EyeTracking):
             self.queue_handler.add_data(True)
             self.timestamps.append(timestamp)
             self.blink_ratios.append(blink_ratio)
+    
 
         if self.queue_handler.search_element('Stop'):
             self.close_flag = True

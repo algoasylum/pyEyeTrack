@@ -17,6 +17,6 @@ Find the official documentation [here](https://algoasylum.github.io/PyTrack/).
 MIT
 
 ## PyTrack Support
-For any issues regarding pytrack, contact the [pytrack support](pytracklibrary@gmail.com).
+For any issues regarding pytrack, contact the pytrack support at pytracklibrary@gmail.com.
 
 ## Contributors

@@ -10,7 +10,7 @@ import os
 import subprocess
 
 
-class PyTrack():
+class pytrack():
     """Pytrack is a pupil tracking library, built on top of the 
        Python programming language. The library provides various 
        functionalities like pupil tracking, blink detection, video, 

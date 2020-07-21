@@ -20,3 +20,4 @@ MIT
 For any issues regarding pytrack, contact the pytrack support at pytracklibrary@gmail.com.
 
 ## Contributors
+Kanchan Sarolkar, Kimaya Badhe, Neha Chaudhari, Samruddhi Kanhed and Shrirang Karandikar.

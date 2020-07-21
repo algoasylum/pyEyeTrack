@@ -10,5 +10,12 @@ PyTrack is a python-based pupil-tracking library. The library tracks eyes with t
 * Customizable and modularized design
 * Concurrent
 
+## Documentation
+Find the official documentation [here](https://algoasylum.github.io/PyTrack/).
+
 ## License
+MIT
+
+## PyTrack Support
+For any issues regarding pytrack, contact the [pytrack support](pytrack@gmail.com).
 

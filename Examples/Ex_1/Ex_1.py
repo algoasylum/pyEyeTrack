@@ -1,6 +1,6 @@
-from PyTrackRunnerClass import PyTrack
+from PyTrackRunnerClass import pytrack
 
-ptr = PyTrack()
+ptr = pytrack()
 ptr.pytrack_runner(
     UI=True,
     UI_file_name='Ex_1_SampleTextUI',

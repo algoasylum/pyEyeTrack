@@ -10,3 +10,5 @@ PyTrack is a python-based pupil-tracking library. The library tracks eyes with t
 * Customizable and modularized design
 * Concurrent
 
+## License
+

@@ -19,3 +19,4 @@ MIT
 ## PyTrack Support
 For any issues regarding pytrack, contact the [pytrack support](pytrack@gmail.com).
 
+## Contributors

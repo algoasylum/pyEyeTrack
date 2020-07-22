@@ -13,3 +13,5 @@ __pycache__/datahandling.cpython-36.pyc
 /AudioVideoRecording/__pycache__/AudioRecordingClass.cpython-36.pyc
 /AudioVideoRecording/__pycache__/VideoRecordingClass.cpython-36.pyc
 ffmpeg.exe
+dist/
+MANIFEST

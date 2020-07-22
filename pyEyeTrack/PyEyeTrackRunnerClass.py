@@ -1,8 +1,8 @@
-from EyeTracking.PupilTrackingClass import PupilTracking
-from EyeTracking.BlinkingClass import Blinking
-from EyeTracking.PupilBlinkingClass import PupilBlinking
-from AudioVideoRecording.VideoRecordingClass import VideoRecorder
-from AudioVideoRecording.AudioRecordingClass import AudioRecorder
+from pyEyeTrack.EyeTracking.PupilTrackingClass import PupilTracking
+from pyEyeTrack.EyeTracking.BlinkingClass import Blinking
+from pyEyeTrack.EyeTracking.PupilBlinkingClass import PupilBlinking
+from pyEyeTrack.AudioVideoRecording.VideoRecordingClass import VideoRecorder
+from pyEyeTrack.AudioVideoRecording.AudioRecordingClass import AudioRecorder
 import threading
 import importlib
 import sys

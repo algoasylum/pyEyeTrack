@@ -1,23 +1,18 @@
 from distutils.core import setup
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
-
 setup(
   name = 'PyEyeTrack',         
   packages = ['PyEyeTrack'],   
-  version = '0.3.4',      
+  version = '0.3.5',      
   license='MIT',        
   description = """PyEyeTrack is a python-based pupil-tracking library. The library tracks eyes with the commodity webcam 
                 and gives a real-time stream of eye coordinates. It provides the functionality of eye-tracking and 
                 blink detection and encapsulates these in a generic interface that allows clients to use these 
                 functionalities in a variety of use-cases.""", 
-  long_description=long_description,
-  long_description_content_type="text/markdown",  
   authors = 'Kanchan Sarolkar, Kimaya Badhe, Neha Chaudhari, Samruddhi Kanhed and Shrirang Karandikar',                   
   author_email = 'pytracklibrary@gmail.com',      
   url = 'https://github.com/algoasylum/PyEyeTrack',  
-  download_url = 'https://github.com/algoasylum/pyEyeTrack/archive/v_03_4.tar.gz',    
+  download_url = 'https://github.com/algoasylum/pyEyeTrack/archive/v_03_5.tar.gz',    
   keywords = ['Eye Tracking','blink detection','User Interface','Webcamera'], 
   install_requires=[
   'dlib==19.4',

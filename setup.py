@@ -1,7 +1,5 @@
 from distutils.core import setup
 
-install_requires = []
-
 with open("README.md", "r") as fh:
     long_description = fh.read()
 

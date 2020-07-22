@@ -1,8 +1,10 @@
 from distutils.core import setup
-
+from setuptools import setup, find_packages
 setup(
   name = 'PyEyeTrack',         
   packages = find_packages(include = ['pyEyeTrack','pyEyeTrack.*']),   
+  package_data={'': [r'pyEyeTrack\data\shape_predictor_68_face_landmarks.dat']},
+  include_package_data=True,
   version = '0.3.6.5',      
   license='MIT',        
   description = """PyEyeTrack is a python-based pupil-tracking library. The library tracks eyes with the commodity webcam 

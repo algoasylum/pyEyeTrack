@@ -30,7 +30,7 @@ class EyeTracking(ABC):
 
     detector = dlib.get_frontal_face_detector()
     predictor = dlib.shape_predictor(
-        r"EyeTracking\shape_predictor_68_face_landmarks.dat")
+        r"pyEyeTrack\data\shape_predictor_68_face_landmarks.dat")
 
     def __init__(self, source):
 

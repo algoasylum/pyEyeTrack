@@ -2,8 +2,8 @@ from distutils.core import setup
 
 setup(
   name = 'PyEyeTrack',         
-  packages = ['PyEyeTrack'],   
-  version = '0.3.6.4',      
+  packages = find_packages(include = ['pyEyeTrack','pyEyeTrack.*']),   
+  version = '0.3.6.5',      
   license='MIT',        
   description = """PyEyeTrack is a python-based pupil-tracking library. The library tracks eyes with the commodity webcam 
                 and gives a real-time stream of eye coordinates. It provides the functionality of eye-tracking and 
@@ -12,7 +12,7 @@ setup(
   authors = 'Kanchan Sarolkar, Kimaya Badhe, Neha Chaudhari, Samruddhi Kanhed and Shrirang Karandikar',                   
   author_email = 'pytracklibrary@gmail.com',      
   url = 'https://github.com/algoasylum/PyEyeTrack',  
-  download_url = 'https://github.com/algoasylum/pyEyeTrack/archive/v_03_6_4.tar.gz',    
+  download_url = 'https://github.com/algoasylum/pyEyeTrack/archive/v_03_6_5.tar.gz',    
   keywords = ['Eye Tracking','blink detection','User Interface','Webcamera'], 
   install_requires=[
   'keyboard==0.13.3',

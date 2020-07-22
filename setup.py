@@ -2,20 +2,13 @@ from distutils.core import setup
 
 install_requires = []
 
-with open('requirements.txt') as f:
-    for line in f.readlines():
-        req = line.strip()
-        if not req or req.startswith('#') or '://' in req:
-            continue
-        install_requires.append(req)
-
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
   name = 'PyEyeTrack',         
   packages = ['PyEyeTrack'],   
-  version = '0.3.3',      
+  version = '0.3.4',      
   license='MIT',        
   description = """PyEyeTrack is a python-based pupil-tracking library. The library tracks eyes with the commodity webcam 
                 and gives a real-time stream of eye coordinates. It provides the functionality of eye-tracking and 
@@ -26,9 +19,17 @@ setup(
   authors = 'Kanchan Sarolkar, Kimaya Badhe, Neha Chaudhari, Samruddhi Kanhed and Shrirang Karandikar',                   
   author_email = 'pytracklibrary@gmail.com',      
   url = 'https://github.com/algoasylum/PyEyeTrack',  
-  download_url = 'https://github.com/algoasylum/pyEyeTrack/archive/v_03_3.tar.gz',    
+  download_url = 'https://github.com/algoasylum/pyEyeTrack/archive/v_03_4.tar.gz',    
   keywords = ['Eye Tracking','blink detection','User Interface','Webcamera'], 
-  install_requires=install_requires,  
+  install_requires=[
+  'dlib==19.4',
+  'keyboard==0.13.3=pypi_0',
+  'numpy==1.18.1=pypi_0',
+  'opencv==3.3.1',
+  'pandas==0.24.0',
+  'pyaudio==0.2.11',
+  'pyqt==5.6.0',
+  ],  
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
     'Intended Audience :: Developers',      # Define that your audience are developers

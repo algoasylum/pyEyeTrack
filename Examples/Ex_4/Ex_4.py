@@ -1,8 +1,8 @@
-from PyTrackRunnerClass import pytrack
+from pyEyeTrack.PyEyeTrackRunnerClass import pyEyeTrack
 
 
-ptr = pytrack()
-ptr.pytrack_runner(
+ptr = pyEyeTrack()
+ptr.pyEyeTrack_runner(
     pupilTracking=True,
     blinkDetection=True,
     video_source=r"#add path of the video input",

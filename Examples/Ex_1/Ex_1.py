@@ -1,7 +1,7 @@
-from PyTrackRunnerClass import pytrack
+from pyEyeTrack.PyEyeTrackRunnerClass import pyEyeTrack
 
-ptr = pytrack()
-ptr.pytrack_runner(
+ptr = pyEyeTrack()
+ptr.pyEyeTrack_runner(
     UI=True,
     UI_file_name='Ex_1_SampleTextUI',
     pupilTracking=True,

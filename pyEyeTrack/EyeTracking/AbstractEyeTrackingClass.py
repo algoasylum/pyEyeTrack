@@ -28,9 +28,10 @@ class EyeTracking(ABC):
             method to start eye-tracking
     """
 
+    predictor_model_path = "\pyEyeTrack\data\shape_predictor_68_face_landmarks.dat"
+
     detector = dlib.get_frontal_face_detector()
-    predictor = dlib.shape_predictor(
-        "pyEyeTrack\data\shape_predictor_68_face_landmarks.dat")
+    predictor = dlib.shape_predictor(predictor_model_path)
 
     def __init__(self, source):
 

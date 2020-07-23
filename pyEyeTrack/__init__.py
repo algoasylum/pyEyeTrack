@@ -1,1 +1,2 @@
 from pyEyeTrack.PyEyeTrackRunnerClass import pyEyeTrack
+import pyEyeTrack

@@ -1,10 +1,10 @@
 import pandas as pd
 import time
 from math import hypot
-from DataHandling import QueueHandling
-from EyeTracking.BlinkingClass import Blinking
-from EyeTracking.PupilTrackingClass import PupilTracking
-from EyeTracking.AbstractEyeTrackingClass import EyeTracking
+from .DataHandling import QueueHandling
+from .BlinkingClass import Blinking
+from .PupilTrackingClass import PupilTracking
+from .AbstractEyeTrackingClass import EyeTracking
 
 
 class PupilBlinking(Blinking, PupilTracking, EyeTracking):

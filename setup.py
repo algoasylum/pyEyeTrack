@@ -3,9 +3,9 @@ from setuptools import setup, find_packages
 setup(
   name = 'PyEyeTrack',         
   packages = find_packages(),   
-  package_data={'': ['pyEyeTrack\data\shape_predictor_68_face_landmarks.dat']},
+  package_data={'': ['pyEyeTrack\EyeTracking\shape_predictor_68_face_landmarks.dat']},
   include_package_data=True,
-  version = '0.3.6.15',      
+  version = '0.3.6.16',      
   license='MIT',        
   description = 'PyEyeTrack is a python-based pupil-tracking library. The library tracks eyes with the commodity webcam \
                 and gives a real-time stream of eye coordinates. It provides the functionality of eye-tracking and \
@@ -14,7 +14,7 @@ setup(
   author = 'Kanchan Sarolkar, Kimaya Badhe, Neha Chaudhari, Samruddhi Kanhed and Shrirang Karandikar',                   
   author_email = 'pytracklibrary@gmail.com',      
   url = 'https://github.com/algoasylum/PyEyeTrack',  
-  download_url = 'https://github.com/algoasylum/pyEyeTrack/archive/v_03_6_15.tar.gz',    
+  download_url = 'https://github.com/algoasylum/pyEyeTrack/archive/v_03_6_16.tar.gz',    
   keywords = ['Eye Tracking','blink detection','User Interface','Webcamera'], 
   install_requires=[
   'keyboard==0.13.3',

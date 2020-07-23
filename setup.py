@@ -5,12 +5,26 @@ setup(
   packages = find_packages(),   
   package_data={'': [r'pyEyeTrack\EyeTracking\shape_predictor_68_face_landmarks.dat']},
   include_package_data=True,
-  version = '0.3.6.17',      
+  version = '0.3.6.25',      
   license='MIT',        
   description = 'PyEyeTrack is a python-based pupil-tracking library. The library tracks eyes with the commodity webcam \
                 and gives a real-time stream of eye coordinates. It provides the functionality of eye-tracking and \
                 blink detection and encapsulates these in a generic interface that allows clients to use these \
                 functionalities in a variety of use-cases.', 
+  long_description='# PyEyeTrack - The Python eYe Tracking Library <br>\
+[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/algoasylum/pyEyeTrack/blob/master/LICENSE)<br>\
+*pyEyeTrack* is a python-based pupil-tracking library. The library tracks eyes with the commodity webcam and gives a real-time stream of eye coordinates.  It provides the functionality of eye-tracking and blink detection and encapsulates these in a generic interface that allows clients to use these functionalities in a variety of use-cases.<br> '
+
+'Features <br>\
+- Real-time Pupil Tracking <br>\
+- Real-time Blink Detection <br>\
+- Customizable and modularized design <br>\
+- Concurrent <br>\
+Documentation <br> \
+Find the official documentation [here](https://algoasylum.github.io/PyTrack/).',
+
+
+  long_description_content_type='text/markdown',
   author = 'Kanchan Sarolkar, Kimaya Badhe, Neha Chaudhari, Samruddhi Kanhed and Shrirang Karandikar',                   
   author_email = 'pytracklibrary@gmail.com',      
   url = 'https://github.com/algoasylum/PyEyeTrack',  

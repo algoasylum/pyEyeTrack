@@ -1,9 +1,9 @@
-from .AbstractEyeTrackingClass import EyeTracking
+from pyEyeTrack.EyeTracking.AbstractEyeTrackingClass import EyeTracking
 import numpy as np
 import pandas as pd
 import cv2
 import time
-from .DataHandling import QueueHandling
+from pyEyeTrack.DataHandling import QueueHandling
 
 
 class PupilTracking(EyeTracking):

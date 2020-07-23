@@ -1,0 +1,17 @@
+Metadata-Version: 1.1
+Name: PyEyeTrack
+Version: 0.3.6.16
+Summary: PyEyeTrack is a python-based pupil-tracking library. The library tracks eyes with the commodity webcam                 and gives a real-time stream of eye coordinates. It provides the functionality of eye-tracking and                 blink detection and encapsulates these in a generic interface that allows clients to use these                 functionalities in a variety of use-cases.
+Home-page: https://github.com/algoasylum/PyEyeTrack
+Author: Kanchan Sarolkar, Kimaya Badhe, Neha Chaudhari, Samruddhi Kanhed and Shrirang Karandikar
+Author-email: pytracklibrary@gmail.com
+License: MIT
+Download-URL: https://github.com/algoasylum/pyEyeTrack/archive/v_03_6_16.tar.gz
+Description: UNKNOWN
+Keywords: Eye Tracking,blink detection,User Interface,Webcamera
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6

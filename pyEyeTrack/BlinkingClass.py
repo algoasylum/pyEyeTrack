@@ -1,8 +1,8 @@
-from pyEyeTrack.AbstractEyeTrackingClass import EyeTracking
+from AbstractEyeTrackingClass import EyeTracking
 import pandas as pd
 import time
 from math import hypot
-from pyEyeTrack.DataHandling import QueueHandling
+from DataHandling import QueueHandling
 
 
 class Blinking (EyeTracking):

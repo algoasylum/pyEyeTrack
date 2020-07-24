@@ -13,3 +13,5 @@ __pycache__/datahandling.cpython-36.pyc
 /AudioVideoRecording/__pycache__/VideoRecordingClass.cpython-36.pyc
 dist/
 MANIFEST
+pyEyeTrack/test.py
+pyEyeTrack/__pycache__

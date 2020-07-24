@@ -6,7 +6,7 @@ setup(
   package_data={'': [r'pyEyeTrack\EyeTracking\shape_predictor_68_face_landmarks.dat']},
   dependency_links = ['http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2'],
   include_package_data=True,
-  version = '0.3.6.26',      
+  version = '0.3.6.27',      
   license='MIT',        
   description = 'PyEyeTrack is a python-based pupil-tracking library. The library tracks eyes with the commodity webcam \
                 and gives a real-time stream of eye coordinates. It provides the functionality of eye-tracking and \
@@ -29,7 +29,7 @@ Find the official documentation [here](https://algoasylum.github.io/PyTrack/).',
   author = 'Kanchan Sarolkar, Kimaya Badhe, Neha Chaudhari, Samruddhi Kanhed and Shrirang Karandikar',                   
   author_email = 'pytracklibrary@gmail.com',      
   url = 'https://github.com/algoasylum/PyEyeTrack',  
-  download_url = 'https://github.com/algoasylum/pyEyeTrack/archive/v_03_6_17.tar.gz',    
+  download_url = 'https://github.com/algoasylum/pyEyeTrack/archive/v_03_6_27.tar.gz',    
   keywords = ['Eye Tracking','blink detection','User Interface','Webcamera'], 
   install_requires=[
   'keyboard==0.13.3',

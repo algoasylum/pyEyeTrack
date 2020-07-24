@@ -4,8 +4,9 @@ setup(
   name = 'PyEyeTrack',         
   packages = find_packages(),   
   package_data={'': [r'pyEyeTrack\EyeTracking\shape_predictor_68_face_landmarks.dat']},
+  dependency_links = ['http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2'],
   include_package_data=True,
-  version = '0.3.6.25',      
+  version = '0.3.6.26',      
   license='MIT',        
   description = 'PyEyeTrack is a python-based pupil-tracking library. The library tracks eyes with the commodity webcam \
                 and gives a real-time stream of eye coordinates. It provides the functionality of eye-tracking and \

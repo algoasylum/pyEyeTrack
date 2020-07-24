@@ -5,3 +5,6 @@ test.py
 pyEyeTrack/EyeTracking/__pycache__
 pyEyeTrack/AudioVideoRecording/__pycache__
 PyEyeTrack.egg-info
+pyEyeTrack/EyeTracking/test.py
+shape_predictor_68_face_landmarks.dat
+shape_predictor_68_face_landmarks.dat.bz2

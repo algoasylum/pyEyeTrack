@@ -17,7 +17,7 @@ Find the official documentation [here](https://algoasylum.github.io/PyTrack/).
 MIT
 
 ## pyEyeTrack Support
-For any issues regarding pyEyeTrack, contact the pyEyeTrack support at pyeyetrack@gmail.com
+For any issues regarding PyEyeTrack, contact the PyEyeTrack support at pyeyetrack@gmail.com
 
 ## Contributors
 Kanchan Sarolkar, Kimaya Badhe, Neha Chaudhari, Samruddhi Kanhed and Shrirang Karandikar.

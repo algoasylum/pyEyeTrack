@@ -16,7 +16,7 @@ Find the official documentation [here](https://algoasylum.github.io/PyTrack/).
 ## License
 MIT
 
-## PyEyeTrack Support
+## pyEyeTrack Support
 For any issues regarding pyEyeTrack, contact the pyEyeTrack support at pyeyetrack@gmail.com
 
 ## Contributors

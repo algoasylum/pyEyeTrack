@@ -126,7 +126,22 @@ Default: False.</p>
 <p>For more examples refer to our <span style="color:#D22817"><a href="https://github.com/algoasylum/PyTrack/tree/master/Examples">Github repository</a></span></p>
 
 <p>Library requirements: 
-The library needs FFmpeg executable file in the working directory for the audio-video syncing to work.</p>
+The library needs FFmpeg executable file in the working directory for the audio-video syncing to work.<br>
+How to merge the audio and video?<br><br>
+
+1. Download ffmpeg.exe from https://sourceforge.net/projects/tumagcc/files/converters/ffmpeg.exe/download<br>
+2. Paste the .exe file to the same folder as the audio,video files.<br>
+3. Open command prompt in that folder. <br>
+4. Command - 'ffmpeg -y -i  audio.wav  -r 30 -i video.avi  -filter:a aresample=async=1 -c:a flac -c:v copy avoutput.mkv'<br>
+
+[reference](https://superuser.com/questions/277642/how-to-merge-audio-and-video-file-in-ffmpeg)<br><br>
+
+Open command prompt in folder - <br>
+1. Go to the required folder.<br>
+2 .The press Shift + right click mouse button any where on the folder window.<br>
+3. Select “Open command windows here” option from the context menu.<br>
+
+[reference](https://www.itechtics.com/open-command-window-folder/)</p>
 
 <p>UI requirements:
 The library can run any UI developed in python. The user needs to ensure that the UI has the main function. The library takes the name of the UI as input and runs the main function in it.</p>

@@ -9,6 +9,5 @@ ptr.pyEyeTrack_runner(
     audioName='audio4',
     videoName='video4',
     videoRecorder=True,
-    syncAudioVideo=True,
-    destinationPath=r'C:\Users\Kanchan\Desktop')
+    syncAudioVideo=True)
     

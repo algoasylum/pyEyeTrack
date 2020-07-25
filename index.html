@@ -126,7 +126,7 @@ Default: False.</p>
 The library needs FFmpeg executable file in the working directory for the audio-video syncing to work.<br>
 How to merge the audio and video?<br><br>
 
-1. Download ffmpeg.exe from the <a href = "https://sourceforge.net/projects/tumagcc/files/converters/ffmpeg.exe/download"<br>here</a><br>
+1. Download ffmpeg.exe from <a href = "https://sourceforge.net/projects/tumagcc/files/converters/ffmpeg.exe/download"<br>here</a><br>
 2. Paste the .exe file to the same folder as the audio,video files.<br>
 3. Open command prompt in that folder. <br>
 4. Command - 'ffmpeg -y -i  audio.wav  -r 30 -i video.avi  -filter:a aresample=async=1 -c:a flac -c:v copy avoutput.mkv'<br>

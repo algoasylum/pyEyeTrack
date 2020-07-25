@@ -8,3 +8,9 @@ PyEyeTrack.egg-info
 pyEyeTrack/EyeTracking/test.py
 shape_predictor_68_face_landmarks.dat
 shape_predictor_68_face_landmarks.dat.bz2
+Output
+Examples/Example_1/__pycache__
+Examples/Example_2/__pycache__
+Examples/Example_3/__pycache__
+Examples/Example_4/__pycache__
+Examples/Example_5/__pycache__

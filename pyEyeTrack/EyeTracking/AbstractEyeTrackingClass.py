@@ -39,9 +39,6 @@ def _bz2_decompress_inplace(path, out_path):
 
 script_path = os.path.dirname(os.path.abspath(__file__))
 
-print('Downloading {} to ./{}'.format(SHAPE_PREDICTOR_URL,
-                                            SHAPE_PREDICTOR_BZ2_FNAME))
-
 if os.path.exists(SHAPE_PREDICTOR_FNAME)==False:
     _download_file(SHAPE_PREDICTOR_URL, SHAPE_PREDICTOR_BZ2_FNAME)
     _bz2_decompress_inplace(SHAPE_PREDICTOR_BZ2_FNAME,

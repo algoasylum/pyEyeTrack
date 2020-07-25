@@ -7,7 +7,6 @@ import threading
 import importlib
 import sys
 import os
-import subprocess
 
 
 class pyEyeTrack():
@@ -36,7 +35,6 @@ class pyEyeTrack():
             videoName='video',
             audioRecorder=False,
             audioName='audio',
-            syncAudioVideo=False,
             destinationPath='/Output'):
         """
         This function enables the user to run the functionalities of the 
@@ -81,9 +79,6 @@ class pyEyeTrack():
             audioName (str, optional):  This parameter enables the user to specify 
             the filename with which the recorded video is to be saved.
             Default: 'audio'.
-
-            syncAudioVideo (bool, optional): This parameter enables the user to 
-            sync audio and video together. Default: False.
 
             destinationPath (str, optional): The parameter enables the user to specify 
             the location of the output files. Default: ‘/Output’.
@@ -137,10 +132,6 @@ class pyEyeTrack():
             eyeTracking = PupilTracking(video_source)
             eyeTrackingThread = threading.Thread(target=eyeTracking.start)
 
-        if syncAudioVideo:
-            audioRecorder = True
-            videoRecorder = True
-
         if videoRecorder:
             videoOutputPath = outputPath + videoName
             videoRecorder = VideoRecorder(videoOutputPath)
@@ -189,12 +180,4 @@ class pyEyeTrack():
             audioRecorderThread.join()
             audioRecorder.stop()
 
-        if syncAudioVideo and audioRecorder and videoRecorder:
-
-            file_name = audioName + videoName
-            avOutputPath = outputPath + file_name
-            
-            cmd = 'ffmpeg -y -i ' + audioOutputPath + '.wav  -r 30 -i ' + videoOutputPath + \
-                '.avi  -filter:a aresample=async=1 -c:a flac -c:v copy ' + avOutputPath + '.mkv'
-            subprocess.call(cmd, shell=True)
                                                     

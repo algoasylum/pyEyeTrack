@@ -10,6 +10,8 @@
 * Customizable and modularized design
 * Concurrent
 
+## Installation Command
+`pip install PyEyeTrack`
 ## Documentation
 Find the official documentation [here](https://algoasylum.github.io/PyTrack/).
 

@@ -67,7 +67,6 @@ The third module is the primary interface to PyEyeTrack - The PyEyeTrackRunnerCl
 <code class="language-plaintext highlighter-rouge">videoName = ‘video’,</code> <br>
 <code class="language-plaintext highlighter-rouge">audioRecorder = False,</code> <br>
 <code class="language-plaintext highlighter-rouge">audioName = ‘audio’,</code> <br>
-<code class="language-plaintext highlighter-rouge">syncAudioVideo = False,</code> <br>
 <code class="language-plaintext highlighter-rouge">destinationPath = ‘/Output’)</code></p>
 
 <p>The user can set flags to run the combination of these functionalities.</p>
@@ -100,8 +99,6 @@ the recorded video is to be saved. Default: ‘video’.</p>
 Default: False.</p>
 
 <p>audioName(str, optional): This parameter enables the user to specify the filename with which the recorded audio is to be saved. Default: ‘audio’.</p>
-
-<p>syncAudioVideo(bool, optional): This parameter enables the user to synchronize audio and video together. This functionality requires a ffmpeg executable file in the working directory to complete the syncing process. Default: False.</p>
 
 <p>destinationPath(str, optional): The parameter enables the user to specify the location of the output files. Default:  ‘/Output’.</p>
 

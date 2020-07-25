@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://algoasylum.github.io/PyTrack/ -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="./style.css">
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>PyEyeTrack - The Python eYe Tracking Library | algoasylum.github.io</title>
+<meta name="generator" content="Jekyll v3.8.7">
+<meta property="og:title" content="PyEyeTrack - The Python eYe Tracking Library">
+<meta property="og:locale" content="en_US">
+<link rel="canonical" href="https://algoasylum.github.io/PyTrack/">
+<meta property="og:url" content="https://algoasylum.github.io/PyTrack/">
+<meta property="og:site_name" content="algoasylum.github.io">
+<script type="application/ld+json">
+{"@type":"WebPage","url":"https://algoasylum.github.io/PyTrack/","headline":"PyEyeTrack - The Python eYe Tracking Library","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body data-gr-c-s-loaded="true">
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/algoasylum/pyEyeTrack">View on GitHub</a>
+
+          <h1 id="project_title">algoasylum.github.io</h1>
+          <h2 id="project_tagline"></h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2 id="pytrack---the-python-eye-tracking-library">PyEyeTrack - The Python eYe Tracking Library</h2>
+
+<h3 id="overview-"><span style="color:#D22817">Overview </span></h3>
+<p>PyEyeTrack is a python-based pupil-tracking library. The library tracks eye movements with commodity hardware, such as a laptop webcam, and gives a real-time stream of eye coordinates.  It provides the functionality of eye-tracking and blink detection and encapsulates these in a generic interface that allows clients to use these functionalities in a variety of use-cases.</p>
+
+<p>The goal has been to make the library generic. A user can provide any interface: a static image, text, video, and call upon PyEyeTrack to capture eye-movement data. The default is to measure eye-movement data captured by a live camera feed, a saved video file can also be used as input. PyEyeTrack can optionally save audio and video as an aid to debugging and development.</p>
+
+<p>Use PyEyeTrack to develop applications that can be controlled by eye movements or blinks. Or use it to track eye movements as an aid to medical diagnostics.</p>
+
+<h3 id="overall-design"><span style="color:#D22817">Overall Design</span></h3>
+
+<p>PyEyeTrack has three modules - EyeTracking, AudioVideo recording, and the main interface (along with the data handling class). 
+The EyeTracking module is the core of the library that performs eye tracking and blink detection. This module is responsible for accessing the webcam to track eyes and write it to a CSV. 
+AudioVideo Recording module records audio and video.
+The third module is the primary interface to PyEyeTrack - The PyEyeTrackRunnerClass.</p>
+
+<h3 id="the-pyeyetrackrunnerclass"><span style="color:#D22817">The PyEyeTrackRunnerClass</span></h3>
+<p>This class provides the user with an interface to execute the functionalities of the library. The user can specify the UI, the eye-tracking functionality, the destination folder and exploit the functions of this library by using various combinations with the following call-</p>
+
+<p><code class="language-plaintext highlighter-rouge">pyEyeTrack_runner(UI = False,</code><br>
+<code class="language-plaintext highlighter-rouge">UI_file_name = “User_ImageUI_EscExit”,</code> <br>
+<code class="language-plaintext highlighter-rouge">pupilTracking = False,</code><br>
+<code class="language-plaintext highlighter-rouge">blinkDetection = False,</code> <br>
+<code class="language-plaintext highlighter-rouge">video_source = 0,</code> <br>
+<code class="language-plaintext highlighter-rouge">eyeTrackingLog = True,</code><br>
+<code class="language-plaintext highlighter-rouge">eyeTrackingFileName = ‘EyeTrackLog’,</code><br>
+<code class="language-plaintext highlighter-rouge">videoRecorder = False,</code> <br>
+<code class="language-plaintext highlighter-rouge">videoName = ‘video’,</code> <br>
+<code class="language-plaintext highlighter-rouge">audioRecorder = False,</code> <br>
+<code class="language-plaintext highlighter-rouge">audioName = ‘audio’,</code> <br>
+<code class="language-plaintext highlighter-rouge">syncAudioVideo = False,</code> <br>
+<code class="language-plaintext highlighter-rouge">destinationPath = ‘/Output’)</code></p>
+
+<p>The user can set flags to run the combination of these functionalities.</p>
+
+<p>UI (bool, optional): This parameter enables the user to run UI. Default: False.</p>
+
+<p>UI_file_name(str, optional): This parameter takes the file name of the UI.
+Default: “User_ImageUI_EscExit”.</p>
+
+<p>pupilTracking(bool, optional): This parameter enables the user to run pupil tracking. 
+Default: False.</p>
+
+<p>blinkDetection(bool, optional): This parameter enables the user to run blink detection. 
+Default: False.</p>
+
+<p>video_source(int/str, optional): This parameter takes either device index or a video file as input. Default: 0.</p>
+
+<p>eyeTrackingLog(bool, optional): This parameter enables the user to generate a CSV of pupil tracking/ blink detection. Default: True.</p>
+
+<p>eyeTrackingFileName(str, optional): This parameter takes the file name for the CSV. 
+Default: ‘EyeTrackLog’.</p>
+
+<p>videoRecorder(bool, optional): This parameter enables the user to record video. 
+Default: False.</p>
+
+<p>videoName(str, optional): This parameter enables the user to specify the filename with which
+the recorded video is to be saved. Default: ‘video’.</p>
+
+<p>audioRecorder(bool, optional): This parameter enables the user to record audio. 
+Default: False.</p>
+
+<p>audioName(str, optional): This parameter enables the user to specify the filename with which the recorded audio is to be saved. Default: ‘audio’.</p>
+
+<p>syncAudioVideo(bool, optional): This parameter enables the user to synchronize audio and video together. This functionality requires a ffmpeg executable file in the working directory to complete the syncing process. Default: False.</p>
+
+<p>destinationPath(str, optional): The parameter enables the user to specify the location of the output files. Default:  ‘/Output’.</p>
+
+<h3 id="the-datahandlingclass"><span style="color:#D22817">The DataHandlingClass</span></h3>
+<p>The Data Handling class is responsible for handling the real-time pupil locations and blinks dynamically. This class implements a queue that the user has access to get the eye location or the blink details dynamically. This functionality gives the user the freedom to use eye-tracking data in real-time as per their wish. The user can use the following functions to handle the data:</p>
+
+<p><code class="language-plaintext highlighter-rouge">add_data(data)</code>: This function allows the user to add data to the dynamic queue.<br>
+<code class="language-plaintext highlighter-rouge">get_data()</code>: This function returns the data elements of the queue.<br>
+<code class="language-plaintext highlighter-rouge">is_empty()</code>: This function checks if the queue is empty.<br>
+<code class="language-plaintext highlighter-rouge">search_element(key)</code>: This function is used to search if a specified key<br></p>
+
+<p>To make this clear, a basic example that makes use of the library to track the eyes of the user reading a text UI is described below.</p>
+
+<p><code class="language-plaintext highlighter-rouge">pyEyeTrack_runner(UI = True,</code> <br>
+<code class="language-plaintext highlighter-rouge">UI_file_name = “Ex_1_SampleTextUI”,</code> <br>
+<code class="language-plaintext highlighter-rouge">pupilTracking = True,</code><br>
+<code class="language-plaintext highlighter-rouge">eyeTrackingLog = True,</code> <br>
+<code class="language-plaintext highlighter-rouge">eyeTrackingFileName = ‘User_1’)</code></p>
+
+<p>This example uses the pupil tracking functionality of the library. This example tracks the eyes of the user as the user reads the text displayed on the screen. The text UI is specified by the user. The user can set the destination path. In this case, as the destination path is not specified, the pupil coordinates CSV will be stored in the default ‘Output’ folder.</p>
+
+<p>For more examples refer to our <span style="color:#D22817"><a href="https://github.com/algoasylum/PyTrack/tree/master/Examples">Github repository</a></span></p>
+
+<p>Library requirements: 
+The library needs dlib’s shape_predictor_68_face_landmarks.dat file to be located in the EyeTracking folder. The library also needs FFmpeg executable file in the working directory for the audio-video syncing to work.</p>
+
+<p>UI requirements:
+The library can run any UI developed in python. The user needs to ensure that the UI has the main function. The library takes the name of the UI as input and runs the main function in it.</p>
+
+<h3 id="contributors"><span style="color:#D22817">Contributors</span></h3>
+          <p> Kanchan Sarolkar, Kimaya Badhe, Neha Chaudhari, Samruddhi Kanhed and Shrirang Karandikar</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+          <p><span style="color:#D22817">Published with </span><a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+  
+
+</body></html>

@@ -12,6 +12,9 @@
 
 ## Installation Command
 `pip install PyEyeTrack`
+Dependencies:
+dlib 19.4: `conda install -c conda-forge dlib=19.4`
+
 ## Documentation
 Find the official documentation [here](https://algoasylum.github.io/PyTrack/).
 

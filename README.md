@@ -19,7 +19,7 @@ dlib 19.4: `conda install -c conda-forge dlib=19.4`<br>
 You may want to use a conda virtual environment to avoid mix up with system dependencies.
 
 ## Documentation
-Find the official documentation [here](https://algoasylum.github.io/PyTrack/).
+Find the official documentation [here](https://algoasylum.github.io/pyEyeTrack/).
 
 ## License
 MIT

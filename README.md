@@ -11,8 +11,8 @@
 * Concurrent
 
 ## Installation Command
-`pip install PyEyeTrack`
-Dependencies:
+`pip install PyEyeTrack`<br>
+Dependencies:<br>
 dlib 19.4: `conda install -c conda-forge dlib=19.4`
 
 ## Documentation

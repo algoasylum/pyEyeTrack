@@ -7,3 +7,7 @@ Working: As the program runs, a blank PyQt window appears on the screen. Press '
 Library Function: The program makes use of the pupil tracking functionality of the library.<br>
 
 Output: The application returns a CSV having the x and y coordinates of both the eyes. 
+
+Dependency:<br>
+To run this example install [PyQt 5.6.0](https://anaconda.org/conda-forge/pyqt/)
+ 

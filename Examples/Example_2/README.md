@@ -7,3 +7,7 @@ Working: The application displays an image specified by the user and tracks the 
 Library Function: The application makes use of the blink detection functionality along with the user-specified UI.<br>
 
 Output: None
+
+Dependency:<br>
+To run this example install [PyQt 5.6.0](https://anaconda.org/conda-forge/pyqt/)
+ 

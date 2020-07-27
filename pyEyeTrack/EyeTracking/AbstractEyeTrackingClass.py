@@ -20,9 +20,6 @@ def _download_file(url, out_path):
     except ImportError:
         from urllib.request import urlretrieve  # Python 3
 
-    # Wrap tqdm instance with urlretrieve compatible function
-    # Abuse mutable [] argument to give function 'memory'
-    # First argument will be supplied using partial (an instance of tqdm)
     def reporthook(t, b=1, bsize=1, tsize=None, last_b=[0]):
         if tsize is not None:
             t.total = tsize
@@ -36,12 +33,21 @@ def _bz2_decompress_inplace(path, out_path):
     with open(path, 'rb') as source, open(out_path, 'wb') as dest:
         dest.write(bz2.decompress(source.read()))
 
-script_path = os.path.dirname(os.path.abspath(__file__))
+def check():
+    print("shape_predictor_68_face_landmarks.dat file is needed.")
+    print("Press n -if you already have it and place it in the current folder")
+    print("Press y -file will start downloading.")
 
-if os.path.exists(SHAPE_PREDICTOR_FNAME)==False:
-    _download_file(SHAPE_PREDICTOR_URL, SHAPE_PREDICTOR_BZ2_FNAME)
-    _bz2_decompress_inplace(SHAPE_PREDICTOR_BZ2_FNAME,
+    download_input = input()
+    if download_input == 'y':
+        script_path = os.path.dirname(os.path.abspath(__file__))
+
+        _download_file(SHAPE_PREDICTOR_URL, SHAPE_PREDICTOR_BZ2_FNAME)
+        _bz2_decompress_inplace(SHAPE_PREDICTOR_BZ2_FNAME,
                                     SHAPE_PREDICTOR_FNAME)
+
+
+check()
 
 class EyeTracking(ABC):
 

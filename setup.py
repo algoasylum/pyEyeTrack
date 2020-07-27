@@ -27,7 +27,7 @@ Find the official documentation [here](https://algoasylum.github.io/PyTrack/).',
 
   long_description_content_type='text/markdown',
   author = 'Kanchan Sarolkar, Kimaya Badhe, Neha Chaudhari, Samruddhi Kanhed and Shrirang Karandikar',                   
-  author_email = 'pytracklibrary@gmail.com',      
+  author_email = 'pyeyetrack@gmail.com',      
   url = 'https://github.com/algoasylum/PyEyeTrack',  
   download_url = 'https://github.com/algoasylum/pyEyeTrack/archive/v_1.tar.gz',    
   keywords = ['Eye Tracking','blink detection','User Interface','Webcamera'], 

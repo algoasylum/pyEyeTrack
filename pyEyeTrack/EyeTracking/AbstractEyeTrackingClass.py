@@ -6,7 +6,6 @@ import dlib
 import sys
 import os
 import bz2
-import unittest
 from functools import partial
 from tqdm import tqdm
 

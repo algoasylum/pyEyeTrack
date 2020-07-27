@@ -7,3 +7,8 @@ Working: The library can take video input specified by the user and return the p
 Library Function: The application makes use of the pupil tracking and blink detection functionalities of the library.<br>
 
 Output: The application returns a CSV having the x and y coordinates along with the blink log of both the eyes.
+
+Dependency:<br>
+To run this example install [PyQt 5.6.0](https://anaconda.org/conda-forge/pyqt/)
+ 
+

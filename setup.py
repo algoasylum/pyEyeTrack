@@ -33,6 +33,7 @@ Find the official documentation [here](https://algoasylum.github.io/PyTrack/).',
   keywords = ['Eye Tracking','blink detection','User Interface','Webcamera'], 
   install_requires=[
   'keyboard==0.13.3',
+  'tqdm==4.48.0',
   'numpy==1.18.1',
   'opencv-python>=4.0.*',
   'pandas==0.24.0',

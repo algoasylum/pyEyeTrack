@@ -9,6 +9,5 @@ Library Function: The program makes use of the pupil tracking functionality of t
 Output: The application returns a CSV having the x and y coordinates of both the eyes. 
 
 Dependency:<br>
-To run this example install PyQt 5.6.0
-[pyqt==5.6.0](https://anaconda.org/conda-forge/pyqt/)
+To run this example install [PyQt 5.6.0](https://anaconda.org/conda-forge/pyqt/)
  

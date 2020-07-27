@@ -27,7 +27,7 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/algoasylum/pyEyeTrack">View on GitHub</a>
 
-          <h1 id="project_title">algoasylum.github.io</h1>
+          <h1 id="project_title">pyeyetrack.algoasylum.com</h1>
           <h2 id="project_tagline"></h2>
 
           
@@ -121,7 +121,9 @@ Default: False.</p>
 <p>This example uses the pupil tracking functionality of the library. This example tracks the eyes of the user as the user reads the text displayed on the screen. The text UI is specified by the user. The user can set the destination path. In this case, as the destination path is not specified, the pupil coordinates CSV will be stored in the default ‘Output’ folder.</p>
 
 <p>For more examples refer to our <span style="color:#D22817"><a href="https://github.com/algoasylum/PyTrack/tree/master/Examples">Github repository</a></span></p>
-
+          
+<h3 id="installation-command"><span style="color:#D22817">Installation Command</span></h3>
+          <code class="language-plaintext highlighter-rouge">pip install PyEyeTrack</code> <br>
 <p>Library requirements: 
 The library needs FFmpeg executable file in the working directory for the audio-video syncing to work.<br>
 How to merge the audio and video?<br><br>
@@ -138,6 +140,11 @@ Open command prompt in folder - <br>
 2 .The press Shift + right click mouse button any where on the folder window.<br>
 3. Select “Open command windows here” option from the context menu.<br>
 <span style="color:#D22817"><a href="https://www.itechtics.com/open-command-window-folder/">Reference</a></span></p>
+    
+    <p>Dependencies:<br>
+    dlib 19.4 <p><code class="language-plaintext highlighter-rouge">pyEyeTrack_runner(UI = False,</code>
+    You may want to use a conda virtual environment to avoid mix up with system dependencies.</p>
+    
 
 <p>UI requirements:
 The library can run any UI developed in python. The user needs to ensure that the UI has the main function. The library takes the name of the UI as input and runs the main function in it.</p>

@@ -10,5 +10,5 @@ Output: The application returns a CSV having the x and y coordinates of both the
 
 Dependency:<br>
 To run this example install PyQt 5.6.0
-[pyqt==5.6.0](conda install -c conda-forge pyqt)
+[pyqt==5.6.0](https://anaconda.org/conda-forge/pyqt/)
  

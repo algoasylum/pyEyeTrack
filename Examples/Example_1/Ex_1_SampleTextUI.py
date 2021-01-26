@@ -118,7 +118,7 @@ def main():
     This function takes the path of a text file and displays and it on a 
     PyQt window.
     """
-    path = "Examples\Example_1\SampleFile.txt"
+    path = "SampleFile.txt"
     app = QApplication(sys.argv)
 
     window = MainWindow(path)

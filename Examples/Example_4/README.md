@@ -2,9 +2,9 @@
 
 Description: This application/demo tracks eyes and returns the pupil coordinates from a video.<br>
 
-Working: The library can take video input specified by the user and return the pupil coordinates.<br>
+Working: The library takes video input specified by the user and returns the pupil coordinates.<br>
 
 Library Function: The application makes use of the pupil tracking and blink detection functionalities of the library.<br>
 
-Output: The application returns a CSV having the x and y coordinates along with the blink log of both the eyes.
+Output: PyEyeTrack returns a CSV containing the x and y coordinates and the blink log of both the eyes..
 
